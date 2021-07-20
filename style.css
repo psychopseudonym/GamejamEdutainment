@@ -1,3 +1,25 @@
 .background {
   background-color: #8D7EFC;
 }
+h1 {
+  color: orange;
+  text-align: center;
+  font-size: 144px;
+  margin: 2%;
+
+}
+h2 {
+  color: yellow; 
+  text-align: center; 
+  font-size: 72px; 
+  margin: 3%;
+}
+.boxes div {
+  height: 200px;
+  width: 200px;
+  border: 9px solid hotpink;
+  font-size: 36px;
+  color: white;
+  background-color: rgb(95, 154, 128);
+  text-align: center;
+}
