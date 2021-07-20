@@ -1,24 +1,10 @@
-// background
-const body = document.querySelector("body");
-body.className = "background";
+// Global variables
+let previousQuestion = random(8); 
 
-// title
-const h1 = document.createElement("h1");
-h1.textContent = "Whack A Fact!";
-h1.style.color = "orange";
-h1.style.textAlign = "center";
-h1.style.fontSize = "144px";
-h1.style.margin = "2%";
-body.appendChild(h1);
-
-// question box
-
-// random question function
-function randomQuestion(num){
-  return Math.floor(Math.random(num) * num);
-}
-
-// questions
+/**
+ * Questions Object
+ * Correct answers located at answer[0]
+ */
 const questionsAndAnswers = [ {'question.id': 0,
                               'question': 'What is the name of our planet?', 
                               'answer': ['Earth', 'Mars', 'Jupiter', 'Venus', 'Saturn', 'Uranus', 'Neptune', 'Mercury', 'Pluto'] 
@@ -30,90 +16,102 @@ const questionsAndAnswers = [ {'question.id': 0,
                               'answer': ['A', 'E', 'I', 'O', 'U'], 
                             }, {'question.id': 3,
                               'question': 'Which month of the year has the least number of days?', 
-                              'answer': 'February', 
+                              'answer': ['February','January']
                             }, {'question.id': 4,
                               'question': 'How many continents are there in the world?', 
-                              'answer': '7', 
+                              'answer': ['7','4']
                             }, {'question.id': 5,
                               'question': 'Which animal is the king of the jungle?', 
-                              'answer': 'Lion', 
+                              'answer': ['Lion','Ant']
                             }, {'question.id': 6,
                               'question': 'How many hours do we have in a day?', 
-                              'answer': 24, 
+                              'answer': [24,12]
                             }, {'question.id': 7,
                               'question': 'Which direction does the sun set?', 
-                              'answer': 'West', 
+                              'answer': ['West','East']
                             }, {'question.id': 8,
                               'question': 'Which direction does the sun rise?', 
-                              'answer': 'East', 
+                              'answer': ['East', 'West']
                             }, {'question.id': 9,
                               'question': 'Who was the first president of the United States of America', 
-                              'answer': 'George Washington', 
+                              'answer': ['George Washington', 'Joe Biden']
                             }, {'question.id': 10,
                               'question': 'Which vegetable are root vegetables?', 
-                              'answer': 'Carrots', 
+                              'answer': ['Carrots']
                             }, {'question.id': 11,
                               'question': 'What is the product of 3 x 3?', 
-                              'answer': 9, 
+                              'answer': [9, 7] 
                             }, {'question.id': 12,
                               'question': 'What city is the Statute of Liberty in?', 
-                              'answer': 'New York', 
+                              'answer': ['New York City', 'Rhode Island']
                             },]
 
-// answers
+// Generate random number with bounds 0 to num
+function random(num){
+  return Math.floor(Math.random() * num);
+}
 
+// Return array with specified length
+function createRandomArray(length){
+  let arr = [];
+  for(let i = 0; i < length; ++i){
+    arr.push(i);
+  }
+  for(let i = length-1; i > 0; --i){ // Fisher-Yates shuffle
+    let j = random(i);
+    let temp = arr[j]; 
+    arr[j] = arr[i];
+    arr[i] = temp;
+  }
+  return arr;
+}
 
+// Remove answers from grid 
+function resetGrid(){
+  for(let i = 0; i <= 8; ++i){
+    document.getElementById("smallbox" + i).textContent = "";
+  }
+}
 
+/**
+ * Fill grid with answers for a specific question. Will randomly place all answers throughout the grid
+ * @param {number} questionID 
+ */
+function visualizeGrid(questionID) {
+  console.log("Entering");
+  let currBox = 0;                                                    // Current selected smallbox 
+  let selected = createRandomArray(9);                                // Random array with smallbox numbers
+  let numAnswers = questionsAndAnswers[questionID]["answer"].length;  // Number of answers 
 
-
-// prompt                      
-const h2 = document.createElement("h2");
-// this will later prompt a random question to answer
-// h2.textContent = `${questionsAndAnswers[randomQuestion(13)]["question"]}`;
-h2.textContent = `${questionsAndAnswers[0]["question"]}`;
-h2.style.color = "yellow";
-h2.style.textAlign = "center";
-h2.style.fontSize = "72px";
-h2.style.margin = "3%";
-body.appendChild(h2);
-            
-
-// game outerbox properties
-const gameContainer = document.createElement("div");
-// gameContainer.style.height = "50%";
-gameContainer.style.width = "700px";
-gameContainer.style.border = "solid orange 12px";
-gameContainer.style.margin = "auto";
-gameContainer.style.display = "flex";
-gameContainer.style.flexWrap = "wrap";
-gameContainer.style.flexDirection = "row";
-gameContainer.style.justifyContent = "space-around"
-gameContainer.style.alignContent = "space-around";
-body.appendChild(gameContainer);
-
-// inner boxes
-
-function createGrid(parent) {
-  let smallBox = '';
-  let ran = randomQuestion(13);
-  for (i = 0; i <= 8; i++){
-    smallBox = document.createElement("div");
-    smallBox.id = `smallbox${i}`;
-    smallBox.style.height = "200px";
-    smallBox.style.width = "200px";
-    smallBox.style.border = "solid hotpink 9px";
-    // let ran = randomQuestion(13);
-    // console.log(ran)
-    smallBox.textContent = `${questionsAndAnswers[ran]["answer"][i]}`;
-    smallBox.style.fontSize = "36px";
-    smallBox.style.color = "white";
-    smallBox.style.backgroundColor = "#5F9A80";
-    smallBox.style.textAlign = "center";
-    parent.appendChild(smallBox);
+  resetGrid();
+  for(let i = 0; i < numAnswers; ++i){                                // Cycle through    
+    currBox = selected[i];
+    document.getElementById("smallbox" + currBox).textContent = `${questionsAndAnswers[questionID]["answer"][i]}`;
+    // console.log(`${questionsAndAnswers[questionID]["question"][i]}`);
   }
 } 
 
-createGrid(gameContainer);
+/**
+ * Change #question element to its specified text
+ * @param {number} questionID 
+ */
+function visualizeQuestion(questionID){
+  document.getElementById("question").textContent = `${questionsAndAnswers[questionID]["question"]}`;
+}
+
+/**
+ * Show a random question and its answer in the game. 2 of the same questions in a row are disabled
+ */
+function implementQuestion(){
+  let numQuestions = questionsAndAnswers.length;
+  let questionID = 0;
+  do{
+    questionID = random(numQuestions);          // Randomly select a question 
+  }while(questionID == previousQuestion);
+  visualizeQuestion(questionID);
+  visualizeGrid(questionID);
+  return questionID;
+}
 
 // 3x3  grid
 
@@ -133,3 +131,15 @@ createGrid(gameContainer);
 // create screen for starting a game, will have new game option and credits buttons
 
 // let menuPrompt =
+
+function main() {
+  // TODO: Use this method on some event
+  implementQuestion();
+}
+main();
+
+
+
+
+
+
