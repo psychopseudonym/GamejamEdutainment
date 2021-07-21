@@ -23,3 +23,24 @@ h2 {
   background-color: rgb(95, 154, 128);
   text-align: center;
 }
+
+.startingScreen {
+  height: 100px;
+  line-height: 100px;
+  width: 300px;
+  border: 9px solid hotpink;
+  font-size: 36px;
+  color: white;
+  background-color: rgb(95, 154, 128);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25%;
+}
+
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: auto;
+}
