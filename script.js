@@ -13,37 +13,37 @@ const questionsAndAnswers = [ {'question.id': 0,
                               'answer': ['Mount Everest', 'Mount Kilimanjaro', 'Lhotse', 'Denali', 'Mont Blanc', 'Nanga Parbat', 'Makalu', 'Manaslu', 'Mount Fuji'] 
                             }, {'question.id': 2,
                               'question': 'Which letter is a vowel', 
-                              'answer': ['A', 'E', 'I', 'O', 'U'], 
+                              'answer': ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'], 
                             }, {'question.id': 3,
                               'question': 'Which month of the year has the least number of days?', 
-                              'answer': ['February','January']
+                              'answer': ['February','January','March','April','May','June','July','August','September','October','November','December']
                             }, {'question.id': 4,
                               'question': 'How many continents are there in the world?', 
-                              'answer': ['7','4']
+                              'answer': ['7','4','1','3','2','5','6','8','9']
                             }, {'question.id': 5,
                               'question': 'Which animal is the king of the jungle?', 
-                              'answer': ['Lion','Ant']
+                              'answer': ['Lion','Ant','Pig','Donkey','Snake','Bat','Duck','Dog','Cat']
                             }, {'question.id': 6,
                               'question': 'How many hours do we have in a day?', 
-                              'answer': [24,12]
+                              'answer': [24,12,3,6,5,1,2,8,7]
                             }, {'question.id': 7,
                               'question': 'Which direction does the sun set?', 
-                              'answer': ['West','East']
+                              'answer': ['West','East','North','South','Northwest','Northeast','Southwest','Southeast','Center']
                             }, {'question.id': 8,
                               'question': 'Which direction does the sun rise?', 
-                              'answer': ['East', 'West']
+                              'answer': ['West','East','North','South','Northwest','Northeast','Southwest','Southeast','Center']
                             }, {'question.id': 9,
                               'question': 'Who was the first president of the United States of America', 
-                              'answer': ['George Washington', 'Joe Biden']
+                              'answer': ['George Washington','Joe Biden','Bill Clinton','Barack Obama','Harry S. Truman','Richard Nixon','Donald Trump','John F. Kennedy','Ronald Reagan']
                             }, {'question.id': 10,
-                              'question': 'Which vegetable are root vegetables?', 
-                              'answer': ['Carrots']
+                              'question': 'Which vegetables are root vegetables?', 
+                              'answer': ['Carrots','Beans','Cabbages','Tomatoes','Peas','Spinach','Corn','Broccoli','Celery']
                             }, {'question.id': 11,
                               'question': 'What is the product of 3 x 3?', 
-                              'answer': [9, 7] 
+                              'answer': [9,7,33,6,1,48,2,18,5] 
                             }, {'question.id': 12,
                               'question': 'What city is the Statute of Liberty in?', 
-                              'answer': ['New York City', 'Rhode Island']
+                              'answer': ['New York City','Rhode Island','Miami','Los Angeles','Seattle','Austin','Denver','Las Vegas','Chicago']
                             },]
 
 // Generate random number with bounds 0 to num
