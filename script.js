@@ -113,31 +113,40 @@ function implementQuestion(){
   return questionID;
 }
 
-// 3x3  grid
-
-// function gameGrid(){
-//   for (let i = 0; i < 9; i++){
-//     createBox(gameContainer);
-//   }
-// }
-
-// gameGrid();
-
-
 
 
 // Menu
 
 // create screen for starting a game, will have new game option and credits buttons
 
-// let menuPrompt =
+function newGame(){
+  let boxes = document.getElementsByClassName('boxes');
+  console.log(boxes)
+  let menuContainer = document.createElement('div');
+  menuContainer.id = "menu";
+
+  let newGameButton = document.createElement('div');
+  newGameButton.className = "startingScreen";
+  newGameButton.textContent = "New Game";
+  menuContainer.appendChild(newGameButton);
+  
+  let creditsButton = document.createElement('div')
+  creditsButton.className = "startingScreen";
+  creditsButton.textContent = 'Credits';
+  menuContainer.appendChild(creditsButton);
+
+  boxes.appendChild(menuContainer);
+
+}
+
 
 function main() {
   // TODO: Use this method on some event
   implementQuestion();
 }
-main();
+// main();
 
+newGame();
 
 
 
