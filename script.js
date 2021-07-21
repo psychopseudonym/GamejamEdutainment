@@ -1,5 +1,5 @@
 // Global variables
-let previousQuestion = random(8); 
+let previousQuestion = random(8); // Start off with a random question
 
 /**
  * Questions Object
@@ -82,6 +82,7 @@ function visualizeGrid(questionID) {
   let currBox = 0;                                                    // Current selected smallbox 
   let selected = createRandomArray(9);                                // Random array with smallbox numbers
   let numAnswers = questionsAndAnswers[questionID]["answer"].length;  // Number of answers 
+  numAnswers = numAnswers > 9 ? 9: 9;
 
   resetGrid();
   for(let i = 0; i < numAnswers; ++i){                                // Cycle through    
@@ -115,13 +116,21 @@ function implementQuestion(){
 
 
 
-// Menu
 
-// create screen for starting a game, will have new game option and credits buttons
+// Temp function for testing
+function test(){
+  resetGrid();
+  document.getElementById('game-elements').style.display = "none";
+}
+
+function hideIntroScreen(){
+  document.getElementById('intro-screen').style.display = "none";
+}
 
 function newGame(){
-  let boxes = document.getElementsByClassName('boxes');
-  console.log(boxes)
+  resetGrid();
+  document.getElementById('game-elements').style.display = "none";
+  let startScreen = document.getElementById('question');
   let menuContainer = document.createElement('div');
   menuContainer.id = "menu";
 
@@ -130,25 +139,23 @@ function newGame(){
   newGameButton.textContent = "New Game";
   menuContainer.appendChild(newGameButton);
   
-  let creditsButton = document.createElement('div')
-  creditsButton.className = "startingScreen";
-  creditsButton.textContent = 'Credits';
-  menuContainer.appendChild(creditsButton);
-
-  boxes.appendChild(menuContainer);
+  // startScreen.appendChild(menuContainer);
+  startScreen.innerHTML = `${menuContainer}`
 
 }
 
-
-function main() {
-  // TODO: Use this method on some event
+/**
+ * Start the game, visualize the questions
+ */
+function initiateGame(){
+  hideIntroScreen();
+  //TODO: Call this on some next question event later on 
+  document.getElementById('game-elements').style.display = "block";
   implementQuestion();
 }
-// main();
 
-newGame();
-
-
-
-
-
+function main() {
+  newGame();
+  document.getElementById('new-game').onclick = function(){initiateGame()};
+}
+main();
