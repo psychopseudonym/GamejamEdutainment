@@ -106,13 +106,15 @@ function visualizeQuestion(questionID){
 function implementQuestion(){
   let numQuestions = questionsAndAnswers.length;
   let questionID = 0;
+
   do{
     questionID = random(numQuestions);          // Randomly select a question 
   }while(questionID == previousQuestion);
   visualizeQuestion(questionID);
   visualizeGrid(questionID);
-  return questionID;
+  setInterval(function(){visualizeGrid(questionID)}, 2000);        // randomly display answers in different boxes every 2 seconds
 }
+
 
 
 
@@ -130,18 +132,6 @@ function hideIntroScreen(){
 function newGame(){
   resetGrid();
   document.getElementById('game-elements').style.display = "none";
-  let startScreen = document.getElementById('question');
-  let menuContainer = document.createElement('div');
-  menuContainer.id = "menu";
-
-  let newGameButton = document.createElement('div');
-  newGameButton.className = "startingScreen";
-  newGameButton.textContent = "New Game";
-  menuContainer.appendChild(newGameButton);
-  
-  // startScreen.appendChild(menuContainer);
-  startScreen.innerHTML = `${menuContainer}`
-
 }
 
 /**
