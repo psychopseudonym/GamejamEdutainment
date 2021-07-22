@@ -1,5 +1,6 @@
 // Global variables
 let previousQuestion = random(8); // Start off with a random question
+let smallboxAnswer = ""; // smallbox inside answer grid containing the right answer
 
 /**
  * Questions Object
@@ -40,7 +41,7 @@ const questionsAndAnswers = [ {'question.id': 0,
                               'answer': ['Carrots','Beans','Cabbages','Tomatoes','Peas','Spinach','Corn','Broccoli','Celery']
                             }, {'question.id': 11,
                               'question': 'What is the product of 3 x 3?', 
-                              'answer': [9,7,33,6,1,48,2,18,5] 
+                              'answer': [9,7,33,6,1,48,2,18,5,0,12,15] 
                             }, {'question.id': 12,
                               'question': 'What city is the Statute of Liberty in?', 
                               'answer': ['New York City','Rhode Island','Miami','Los Angeles','Seattle','Austin','Denver','Las Vegas','Chicago']
@@ -51,13 +52,14 @@ function random(num){
   return Math.floor(Math.random() * num);
 }
 
-// Return array with specified length
-function createRandomArray(length){
+// Return array with specified [start,end) values, (end-start) numbers
+function createRandomArray(start, end){
   let arr = [];
-  for(let i = 0; i < length; ++i){
+  for(let i = start; i < end; ++i){
     arr.push(i);
   }
-  for(let i = length-1; i > 0; --i){ // Fisher-Yates shuffle
+  let newLength = arr.length;
+  for(let i = newLength-1; i > 0; --i){ // Fisher-Yates shuffle
     let j = random(i);
     let temp = arr[j]; 
     arr[j] = arr[i];
@@ -80,16 +82,27 @@ function resetGrid(){
 function visualizeGrid(questionID) {
   console.log("Entering");
   let currBox = 0;                                                    // Current selected smallbox 
-  let selected = createRandomArray(9);                                // Random array with smallbox numbers
-  let numAnswers = questionsAndAnswers[questionID]["answer"].length;  // Number of answers 
-  numAnswers = numAnswers > 9 ? 9: 9;
+  let numAnswers = questionsAndAnswers[questionID]["answer"].length;  // Number of total answer choices
+  let selectedAnswers = createRandomArray(1,numAnswers);              // Random selection of answer choices (except right answer)
+  console.log(selectedAnswers);
+  let selectedGrids = createRandomArray(0,9);                         // Random selection of smallboxes
+  
+  
 
   resetGrid();
-  for(let i = 0; i < numAnswers; ++i){                                // Cycle through    
-    currBox = selected[i];
-    document.getElementById("smallbox" + currBox).textContent = `${questionsAndAnswers[questionID]["answer"][i]}`;
-    // console.log(`${questionsAndAnswers[questionID]["question"][i]}`);
+  //Separately add in correct answer 
+  document.getElementById("smallbox" + selectedGrids[0]).textContent = `${questionsAndAnswers[questionID]["answer"][0]}`;
+  smallboxAnswer = selectedGrids[0];
+
+  // Add in wrong answers
+  numAnswers = numAnswers > 9 ? 9: numAnswers;                        // # answer choices <= # smallboxes
+  let numTimes = 0;
+  for(let i = 1; i < numAnswers; ++i){
+    currBox = selectedGrids[i];
+    document.getElementById("smallbox" + currBox).textContent = `${questionsAndAnswers[questionID]["answer"][selectedAnswers[i-1]]}`;
+    numTimes++;
   }
+  console.log("I:" + numTimes);
 } 
 
 /**
@@ -103,27 +116,17 @@ function visualizeQuestion(questionID){
 /**
  * Show a random question and its answer in the game. 2 of the same questions in a row are disabled
  */
-function implementQuestion(){
+function newQuestion(){
   let numQuestions = questionsAndAnswers.length;
   let questionID = 0;
-
   do{
     questionID = random(numQuestions);          // Randomly select a question 
   }while(questionID == previousQuestion);
   visualizeQuestion(questionID);
   visualizeGrid(questionID);
-  setInterval(function(){visualizeGrid(questionID)}, 2000);        // randomly display answers in different boxes every 2 seconds
+  return questionID;
 }
 
-
-
-
-
-// Temp function for testing
-function test(){
-  resetGrid();
-  document.getElementById('game-elements').style.display = "none";
-}
 
 function hideIntroScreen(){
   document.getElementById('intro-screen').style.display = "none";
@@ -132,6 +135,18 @@ function hideIntroScreen(){
 function newGame(){
   resetGrid();
   document.getElementById('game-elements').style.display = "none";
+  let startScreen = document.getElementById('question');
+  let menuContainer = document.createElement('div');
+  menuContainer.id = "menu";
+
+  let newGameButton = document.createElement('div');
+  newGameButton.className = "startingScreen";
+  newGameButton.textContent = "New Game";
+  menuContainer.appendChild(newGameButton);
+  
+  // startScreen.appendChild(menuContainer);
+  startScreen.innerHTML = `${menuContainer}`
+
 }
 
 /**
@@ -141,11 +156,12 @@ function initiateGame(){
   hideIntroScreen();
   //TODO: Call this on some next question event later on 
   document.getElementById('game-elements').style.display = "block";
-  implementQuestion();
+  newQuestion();
 }
 
 function main() {
   newGame();
   document.getElementById('new-game').onclick = function(){initiateGame()};
+  document.getElementById(smallboxAnswer).onclick = function(){newQuestion()};
 }
 main();
