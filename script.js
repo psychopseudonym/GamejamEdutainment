@@ -2,6 +2,8 @@
 let previousQuestion = random(8); // Start off with a random question
 let smallboxAnswer = "0"; // smallbox inside answer grid containing the right answer
 let inStartScreen = true;
+let displayAnswerInterval;
+let questionID = 0;
 
 /**
  * Questions Object
@@ -116,13 +118,15 @@ function visualizeQuestion(questionID){
  */
 function newQuestion(){
   let numQuestions = questionsAndAnswers.length;
-  let questionID = 0;
+  questionID = 0;
   do{
     questionID = random(numQuestions);          // Randomly select a question 
   }while(questionID == previousQuestion);
   visualizeQuestion(questionID);
+  revisualizeGrid = true;
   visualizeGrid(questionID);
-  return questionID;
+  // visualizeGrid(questionID);
+  displayAnswerInterval = setInterval(function(){visualizeGrid(questionID)}, 2000);        // randomly display answers in different boxes every 2 seconds
 }
 
 
@@ -132,25 +136,7 @@ function hideIntroScreen(){
 function hideGameElements(){
   document.getElementById('game-elements').style.display = "none";
 }
-function newGame(){
-  resetGrid();
-  document.getElementById('game-elements').style.display = "none";
-  let startScreen = document.getElementById('question');
-  let menuContainer = document.createElement('div');
-  menuContainer.id = "menu";
 
-  let newGameButton = document.createElement('div');
-  newGameButton.className = "startingScreen";
-  newGameButton.textContent = "New Game";
-  menuContainer.appendChild(newGameButton);
-  
-  // startScreen.appendChild(menuContainer);
-  startScreen.innerHTML = `${menuContainer}`
-
-}
-function inputQuestion(){
-  
-}
 /**
  * Start the game, visualize the questions
  */
@@ -163,10 +149,11 @@ function initiateGame(){
   return true;
 }
 
-function logBox(num){
-  console.log("Box:" + num + " Answer:" +smallboxAnswer);
+function checkUserInput(num){
+  console.log("Box:" + num + " Answer:" +smallboxAnswer); // Testing
   if(num == smallboxAnswer){
-    console.log("Correct answer");
+    clearInterval(displayAnswerInterval);
+    console.log("Correct answer"); // Testing
     newQuestion(); 
   }
 }
@@ -175,14 +162,14 @@ function main() {
   if(inStartScreen){
     document.getElementById('new-game').onclick = function(){initiateGame()};
   }
-  document.getElementById('smallbox0').onclick = function(){logBox(0)};  
-  document.getElementById('smallbox1').onclick = function(){logBox(1)};  
-  document.getElementById('smallbox2').onclick = function(){logBox(2)};  
-  document.getElementById('smallbox3').onclick = function(){logBox(3)};  
-  document.getElementById('smallbox4').onclick = function(){logBox(4)};  
-  document.getElementById('smallbox5').onclick = function(){logBox(5)}; 
-  document.getElementById('smallbox6').onclick = function(){logBox(6)}; 
-  document.getElementById('smallbox7').onclick = function(){logBox(7)}; 
-  document.getElementById('smallbox8').onclick = function(){logBox(8)}; 
+  document.getElementById('smallbox0').onclick = function(){checkUserInput(0)};  
+  document.getElementById('smallbox1').onclick = function(){checkUserInput(1)};  
+  document.getElementById('smallbox2').onclick = function(){checkUserInput(2)};  
+  document.getElementById('smallbox3').onclick = function(){checkUserInput(3)};  
+  document.getElementById('smallbox4').onclick = function(){checkUserInput(4)};  
+  document.getElementById('smallbox5').onclick = function(){checkUserInput(5)}; 
+  document.getElementById('smallbox6').onclick = function(){checkUserInput(6)}; 
+  document.getElementById('smallbox7').onclick = function(){checkUserInput(7)}; 
+  document.getElementById('smallbox8').onclick = function(){checkUserInput(8)}; 
 }
 main();
