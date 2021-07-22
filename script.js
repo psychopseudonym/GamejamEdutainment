@@ -1,6 +1,7 @@
 // Global variables
 let previousQuestion = random(8); // Start off with a random question
-let smallboxAnswer = ""; // smallbox inside answer grid containing the right answer
+let smallboxAnswer = "0"; // smallbox inside answer grid containing the right answer
+let inStartScreen = true;
 
 /**
  * Questions Object
@@ -80,11 +81,9 @@ function resetGrid(){
  * @param {number} questionID 
  */
 function visualizeGrid(questionID) {
-  console.log("Entering");
   let currBox = 0;                                                    // Current selected smallbox 
   let numAnswers = questionsAndAnswers[questionID]["answer"].length;  // Number of total answer choices
   let selectedAnswers = createRandomArray(1,numAnswers);              // Random selection of answer choices (except right answer)
-  console.log(selectedAnswers);
   let selectedGrids = createRandomArray(0,9);                         // Random selection of smallboxes
   
   
@@ -93,7 +92,7 @@ function visualizeGrid(questionID) {
   //Separately add in correct answer 
   document.getElementById("smallbox" + selectedGrids[0]).textContent = `${questionsAndAnswers[questionID]["answer"][0]}`;
   smallboxAnswer = selectedGrids[0];
-
+  console.log("Grid answer:" + smallboxAnswer);
   // Add in wrong answers
   numAnswers = numAnswers > 9 ? 9: numAnswers;                        // # answer choices <= # smallboxes
   let numTimes = 0;
@@ -102,7 +101,6 @@ function visualizeGrid(questionID) {
     document.getElementById("smallbox" + currBox).textContent = `${questionsAndAnswers[questionID]["answer"][selectedAnswers[i-1]]}`;
     numTimes++;
   }
-  console.log("I:" + numTimes);
 } 
 
 /**
@@ -131,7 +129,9 @@ function newQuestion(){
 function hideIntroScreen(){
   document.getElementById('intro-screen').style.display = "none";
 }
-
+function hideGameElements(){
+  document.getElementById('game-elements').style.display = "none";
+}
 function newGame(){
   resetGrid();
   document.getElementById('game-elements').style.display = "none";
@@ -148,20 +148,41 @@ function newGame(){
   startScreen.innerHTML = `${menuContainer}`
 
 }
-
+function inputQuestion(){
+  
+}
 /**
  * Start the game, visualize the questions
  */
 function initiateGame(){
+  console.log("Initiate game");
   hideIntroScreen();
-  //TODO: Call this on some next question event later on 
+  inStartScreen = false; 
   document.getElementById('game-elements').style.display = "block";
   newQuestion();
+  return true;
 }
 
+function logBox(num){
+  console.log("Box:" + num + " Answer:" +smallboxAnswer);
+  if(num == smallboxAnswer){
+    console.log("Correct answer");
+    newQuestion(); 
+  }
+}
 function main() {
-  newGame();
-  document.getElementById('new-game').onclick = function(){initiateGame()};
-  document.getElementById(smallboxAnswer).onclick = function(){newQuestion()};
+  hideGameElements(); // Initially hide game elements
+  if(inStartScreen){
+    document.getElementById('new-game').onclick = function(){initiateGame()};
+  }
+  document.getElementById('smallbox0').onclick = function(){logBox(0)};  
+  document.getElementById('smallbox1').onclick = function(){logBox(1)};  
+  document.getElementById('smallbox2').onclick = function(){logBox(2)};  
+  document.getElementById('smallbox3').onclick = function(){logBox(3)};  
+  document.getElementById('smallbox4').onclick = function(){logBox(4)};  
+  document.getElementById('smallbox5').onclick = function(){logBox(5)}; 
+  document.getElementById('smallbox6').onclick = function(){logBox(6)}; 
+  document.getElementById('smallbox7').onclick = function(){logBox(7)}; 
+  document.getElementById('smallbox8').onclick = function(){logBox(8)}; 
 }
 main();
