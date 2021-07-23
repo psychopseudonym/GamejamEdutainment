@@ -12,7 +12,7 @@ h2 {
   color: yellow; 
   text-align: center; 
   font-size: 72px; 
-  margin: 3%;
+  margin: 1%;
 }
 .boxes div {
   height: 200px;
@@ -43,4 +43,12 @@ h2 {
   display: flex;
   justify-content: center;
   margin-bottom: 25%;
+}
+
+#timer {
+  color : #89CFF0;
+  text-align : center;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 2%;
 }
