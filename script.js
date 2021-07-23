@@ -5,6 +5,9 @@ let inStartScreen = true;
 let displayAnswerInterval;
 let questionID = 0;
 
+let timer = document.getElementById("timer");
+
+
 /**
  * Questions Object
  * Correct answers located at answer[0]
@@ -35,7 +38,7 @@ const questionsAndAnswers = [ {'question.id': 0,
                               'answer': ['West','East','North','South','Northwest','Northeast','Southwest','Southeast','Center']
                             }, {'question.id': 8,
                               'question': 'Which direction does the sun rise?', 
-                              'answer': ['West','East','North','South','Northwest','Northeast','Southwest','Southeast','Center']
+                              'answer': ['East','West','North','South','Northwest','Northeast','Southwest','Southeast','Center']
                             }, {'question.id': 9,
                               'question': 'Who was the first president of the United States of America', 
                               'answer': ['George Washington','Joe Biden','Bill Clinton','Barack Obama','Harry S. Truman','Richard Nixon','Donald Trump','John F. Kennedy','Ronald Reagan']
@@ -91,6 +94,7 @@ function visualizeGrid(questionID) {
   
 
   resetGrid();
+  
   //Separately add in correct answer 
   document.getElementById("smallbox" + selectedGrids[0]).textContent = `${questionsAndAnswers[questionID]["answer"][0]}`;
   smallboxAnswer = selectedGrids[0];
@@ -110,8 +114,34 @@ function visualizeGrid(questionID) {
  * @param {number} questionID 
  */
 function visualizeQuestion(questionID){
+  
   document.getElementById("question").textContent = `${questionsAndAnswers[questionID]["question"]}`;
+  
 }
+
+
+/**
+ *  2 minute timer
+ */
+
+ function roundTimer(duration, display){
+  let timer = duration, minutes, seconds;
+  setInterval(function() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration
+    }
+
+  }, 1000);
+}
+
 
 /**
  * Show a random question and its answer in the game. 2 of the same questions in a row are disabled
@@ -127,6 +157,7 @@ function newQuestion(){
   visualizeGrid(questionID);
   // visualizeGrid(questionID);
   displayAnswerInterval = setInterval(function(){visualizeGrid(questionID)}, 2000);        // randomly display answers in different boxes every 2 seconds
+  
 }
 
 
@@ -144,7 +175,8 @@ function initiateGame(){
   console.log("Initiate game");
   hideIntroScreen();
   inStartScreen = false; 
-  document.getElementById('game-elements').style.display = "block";
+  document.getElementById('game-elements').style.display = "block"; 
+  roundTimer(120, timer)
   newQuestion();
   return true;
 }
