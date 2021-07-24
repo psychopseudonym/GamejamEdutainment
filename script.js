@@ -6,8 +6,7 @@ let displayAnswerInterval;
 let questionID = 0;
 let currentScore = 0;
 
-let timer = document.getElementById("timer");
-roundTimer(120, timer);
+
 
 function randomVowel() {
   const vowels = ["A", "E", "I", "O", "U"]
@@ -365,6 +364,18 @@ function checkUserInput(num) {
     }
   }
 }
+
+/********************
+ * PAGE SELECTION:
+ * main() : turn on for main page control (start menu and game)
+ * instruction() : turn on for instruction page control
+ *******************/
+
+function instructions() {
+    // TODO: Implement any logic for the instruction page
+    console.log("instruction page");
+}
+
 function main() {
   hideGameElements(); // Initially hide game elements
   if (inStartScreen) {
@@ -372,6 +383,8 @@ function main() {
       initiateGame();
     };
   }
+  let timer = document.getElementById("timer");
+  roundTimer(120, timer);
   document.getElementById("smallbox0").onclick = function () {
     checkUserInput(0);
   };
@@ -401,3 +414,10 @@ function main() {
   };
 }
 main();
+
+if(document.URL.includes("index.html")) {
+    main();
+  }
+if(document.URL.includes("instructions.html")) {
+    instructions();
+}
