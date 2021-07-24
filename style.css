@@ -30,8 +30,14 @@ h2 {
   width: 300px;
   margin: auto;
 }
-
-#new-game {
+.intro-buttons {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.intro-buttons button {
+  /* width: 100px; */
+  margin: 0 10px 0 10px;
   height: 100px;
   line-height: 100px;
   width: 300px;
@@ -44,11 +50,26 @@ h2 {
   justify-content: center;
   margin-bottom: 25%;
 }
-
+.intro-buttons a {
+  text-decoration:none;
+}
 #timer {
   color : #89CFF0;
   text-align : center;
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 2%;
+}
+
+
+.instruction-message {
+  background-color:white;
+  display:flex;
+  justify-content:space-around;
+  width:300px;
+  margin:auto;
+}
+.instruction-message * {
+  
+  text-decoration-color: blue;
 }
