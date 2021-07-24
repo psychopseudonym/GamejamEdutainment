@@ -9,6 +9,12 @@ let currentScore = 0;
 let timer = document.getElementById("timer");
 roundTimer(120, timer);
 
+function randomVowel() {
+  const vowels = ["A", "E", "I", "O", "U"]
+  return vowels[random(5)]
+};
+
+
 /**
  * Questions Object
  * Correct answers located at answer[0]
@@ -49,27 +55,30 @@ const questionsAndAnswers = [
     question: "Which letter is a vowel",
     // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
     answer: [
-      "A",
+      displayVowel = setInterval(function () {
+        randomVowel();
+      }, 2000),
+      // 
       "B",
       "C",
       "D",
-      "E",
+      // "E",
       "F",
       "G",
       "H",
-      "I",
+      // "I",
       "J",
       "K",
       "L",
       "M",
       "N",
-      "O",
+      // "O",
       "P",
       "Q",
       "R",
       "S",
       "T",
-      "U",
+      // "U",
       "V",
       "W",
       "X",
