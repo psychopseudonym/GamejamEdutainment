@@ -4,9 +4,10 @@ let smallboxAnswer = "0"; // smallbox inside answer grid containing the right an
 let inStartScreen = true;
 let displayAnswerInterval;
 let questionID = 0;
+let currentScore = 0;
 
 let timer = document.getElementById("timer");
-
+roundTimer(120, timer)
 
 /**
  * Questions Object
@@ -60,6 +61,7 @@ function random(num){
 
 // Return array with specified [start,end) values, (end-start) numbers
 function createRandomArray(start, end){
+  
   let arr = [];
   for(let i = start; i < end; ++i){
     arr.push(i);
@@ -126,6 +128,7 @@ function visualizeQuestion(questionID){
 
  function roundTimer(duration, display){
   let timer = duration, minutes, seconds;
+  
   setInterval(function() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
@@ -133,11 +136,13 @@ function visualizeQuestion(questionID){
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    display.textContent = minutes + ":" + seconds;
+    display.textContent = `Timer: ` + minutes + ":" + seconds + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + `Score: ` + currentScore;
 
     if (--timer < 0) {
-      timer = duration
+      timer = 0
     }
+
+   
 
   }, 1000);
 }
@@ -175,8 +180,9 @@ function initiateGame(){
   console.log("Initiate game");
   hideIntroScreen();
   inStartScreen = false; 
+  
   document.getElementById('game-elements').style.display = "block"; 
-  roundTimer(120, timer)
+  
   newQuestion();
   return true;
 }
@@ -186,6 +192,8 @@ function checkUserInput(num){
   if(num == smallboxAnswer){
     clearInterval(displayAnswerInterval);
     console.log("Correct answer"); // Testing
+    currentScore += 10;
+    console.log(currentScore)
     newQuestion(); 
   }
 }
