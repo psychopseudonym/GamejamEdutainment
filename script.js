@@ -7,7 +7,7 @@ let questionID = 0;
 let currentScore = 0;
 
 
-
+// function for question.id 2, answer[0]
 function randomVowel() {
   const vowels = ["A", "E", "I", "O", "U"]
   return vowels[random(5)]
@@ -54,9 +54,7 @@ const questionsAndAnswers = [
     question: "Which letter is a vowel",
     // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
     answer: [
-      displayVowel = setInterval(function () {
-        randomVowel();
-      }, 2000),
+      randomVowel(),
       // 
       "B",
       "C",
@@ -280,7 +278,10 @@ function visualizeQuestion(questionID) {
 }
 
 /**
- *  2 minute timer
+ *  2 minute timer that takes seconds as input and coverts to minutes
+ * display is applied to textContent of node
+ * @param {number} duration
+ * @param {number} display
  */
 function roundTimer(duration, display) {
   let timer = duration,
@@ -325,6 +326,7 @@ function newQuestion() {
   displayAnswerInterval = setInterval(function () {
     visualizeGrid(questionID);
   }, 2000); // randomly display answers in different boxes every 2 seconds
+
 }
 
 function hideIntroScreen() {
@@ -352,6 +354,10 @@ function checkUserInput(num) {
   console.log("Box:" + num + " Answer:" + smallboxAnswer); // Testing
   if (num == smallboxAnswer) {
     clearInterval(displayAnswerInterval);
+    correctResponse = questionsAndAnswers[questionID]
+    console.log(correctResponse)
+    // delete questionsAndAnswers[questionID]
+    console.log(questionsAndAnswers)
     console.log("Correct answer"); // Testing
     currentScore += 10;
     console.log(currentScore);
@@ -363,6 +369,7 @@ function checkUserInput(num) {
       currentScore -= 5;
     }
   }
+  // return currentScore
 }
 
 /********************
