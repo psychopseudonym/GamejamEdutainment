@@ -1,15 +1,75 @@
 .background {
   background-color: #8D7EFC;
+  background-image: url(./images/forest.jpg);
+  height:200%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  
 }
+
+/************
+MAIN MENU  
+************/
+
+#intro-screen {
+  z-index: 999;
+}
+
+/* Game title */
 h1 {
-  color: orange;
+  /* color: #f89c54; */
+  font-family: 'Unica One', cursive;
   text-align: center;
   font-size: 144px;
   margin: 2%;
 
+  /* background: -webkit-linear-gradient(rgb(120, 224, 134), rgb(95, 95, 95)); */
+  background: -webkit-linear-gradient(rgb(3, 247, 32), rgba(245, 111, 2, 0.856));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:30%;
+}
+.intro-buttons {
+  display:flex;
+  width:400px;
+  height:500px;
+  margin:auto;
+  flex-direction: column;
+  justify-content:flex-start;
+}
+.intro-buttons button {
+  /* width: 100px; */
+  margin: 0 10px 0 10px;
+  height: 55px;
+  line-height: 55px;
+  width: 300px;
+  /* border: 9px solid hotpink; */
+  font-size: 36px;
+  color: white;
+  background-color: rgb(62, 63, 63);
+  opacity:0.8;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25%;
+}
+.intro-buttons a {
+  text-decoration:none;
+}
+
+/********
+GAME AREA
+********/
+
+/* Question */
+/* For cloud text: https://codepen.io/CameronFitzwilliam/pen/pamobO */
 h2 {
-  color: yellow; 
+  color: white;
   text-align: center; 
   font-size: 72px; 
   margin: 1%;
@@ -30,35 +90,19 @@ h2 {
   width: 300px;
   margin: auto;
 }
-.intro-buttons {
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.intro-buttons button {
-  /* width: 100px; */
-  margin: 0 10px 0 10px;
-  height: 100px;
-  line-height: 100px;
-  width: 300px;
-  border: 9px solid hotpink;
-  font-size: 36px;
-  color: white;
-  background-color: rgb(95, 154, 128);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25%;
-}
-.intro-buttons a {
-  text-decoration:none;
-}
+
 #timer {
-  color : #89CFF0;
-  text-align : center;
+  /* color : #89CFF0; */
+  color:rgb(221, 216, 216);
+  background-color: rgb(62, 63, 63,0.8);
   font-size: 48px;
   font-weight: bold;
-  margin-bottom: 2%;
+
+  text-align:center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  margin-bottom:10px;
 }
 
 
