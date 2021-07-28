@@ -6,8 +6,9 @@ let displayAnswerInterval;
 let questionID = 0;
 let currentScore = 0;
 
+let timer = document.getElementById("timer");
+roundTimer(120, timer);
 
-// function for question.id 2, answer[0]
 function randomVowel() {
   const vowels = ["A", "E", "I", "O", "U"]
   return vowels[random(5)]
@@ -52,7 +53,6 @@ const questionsAndAnswers = [
   {
     "question.id": 2,
     question: "Which letter is a vowel",
-    // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
     answer: [
       randomVowel(),
       // 
@@ -208,6 +208,25 @@ const questionsAndAnswers = [
   },
 ];
 
+// MUSIC
+
+
+bgMusic = new Audio('/sounds/bensound-littleidea.mp3');
+correctAnswer = new Audio('/sounds/click-select.wav');
+incorrectAnswer = new Audio('/sounds/click-error.wav');
+
+
+if (typeof bgMusic.loop == 'boolean') {
+  bgMusic.loop = true;
+} else {
+  bgMusic.addEventListener('ended', function(){
+    this.currentTime = 0;
+    this.play()
+  }, false);
+}
+
+
+
 // Generate random number with bounds 0 to num
 function random(num) {
   return Math.floor(Math.random() * num);
@@ -278,10 +297,7 @@ function visualizeQuestion(questionID) {
 }
 
 /**
- *  2 minute timer that takes seconds as input and coverts to minutes
- * display is applied to textContent of node
- * @param {number} duration
- * @param {number} display
+ *  2 minute timer
  */
 function roundTimer(duration, display) {
   let timer = duration,
@@ -326,7 +342,6 @@ function newQuestion() {
   displayAnswerInterval = setInterval(function () {
     visualizeGrid(questionID);
   }, 2000); // randomly display answers in different boxes every 2 seconds
-
 }
 
 function hideIntroScreen() {
@@ -343,9 +358,9 @@ function initiateGame() {
   console.log("Initiate game");
   hideIntroScreen();
   inStartScreen = false;
-
+  bgMusic.play();
   document.getElementById("game-elements").style.display = "block";
-
+  document.getElementById("game-elements")
   newQuestion();
   return true;
 }
@@ -354,35 +369,20 @@ function checkUserInput(num) {
   console.log("Box:" + num + " Answer:" + smallboxAnswer); // Testing
   if (num == smallboxAnswer) {
     clearInterval(displayAnswerInterval);
-    correctResponse = questionsAndAnswers[questionID]
-    console.log(correctResponse)
-    // delete questionsAndAnswers[questionID]
-    console.log(questionsAndAnswers)
     console.log("Correct answer"); // Testing
+    correctAnswer.play();
     currentScore += 10;
     console.log(currentScore);
     newQuestion();
   } else {
+    incorrectAnswer.play();
     if (currentScore == 0) {
       currentScore = 0;
     } else {
       currentScore -= 5;
     }
   }
-  // return currentScore
 }
-
-/********************
- * PAGE SELECTION:
- * main() : turn on for main page control (start menu and game)
- * instruction() : turn on for instruction page control
- *******************/
-
-function instructions() {
-    // TODO: Implement any logic for the instruction page
-    console.log("instruction page");
-}
-
 function main() {
   hideGameElements(); // Initially hide game elements
   if (inStartScreen) {
@@ -390,8 +390,6 @@ function main() {
       initiateGame();
     };
   }
-  let timer = document.getElementById("timer");
-  roundTimer(120, timer);
   document.getElementById("smallbox0").onclick = function () {
     checkUserInput(0);
   };
@@ -421,10 +419,3 @@ function main() {
   };
 }
 main();
-
-if(document.URL.includes("index.html")) {
-    main();
-  }
-if(document.URL.includes("instructions.html")) {
-    instructions();
-}
