@@ -5,10 +5,10 @@ let inStartScreen = true;
 let displayAnswerInterval;
 let questionID = 0;
 let currentScore = 0;
+let timerFinished = false;
 
-let timer = document.getElementById("timer");
-roundTimer(120, timer);
 
+// function for question.id 2, answer[0]
 function randomVowel() {
   const vowels = ["A", "E", "I", "O", "U"]
   return vowels[random(5)]
@@ -37,7 +37,7 @@ const questionsAndAnswers = [
   },
   {
     "question.id": 1,
-    question: "Which is the tallest mountain in the world?",
+    question: "What is the tallest mountain in the world?",
     answer: [
       "Mount Everest",
       "Mount Kilimanjaro",
@@ -53,6 +53,7 @@ const questionsAndAnswers = [
   {
     "question.id": 2,
     question: "Which letter is a vowel",
+    // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
     answer: [
       randomVowel(),
       // 
@@ -225,8 +226,6 @@ if (typeof bgMusic.loop == 'boolean') {
   }, false);
 }
 
-
-
 // Generate random number with bounds 0 to num
 function random(num) {
   return Math.floor(Math.random() * num);
@@ -297,7 +296,10 @@ function visualizeQuestion(questionID) {
 }
 
 /**
- *  2 minute timer
+ *  2 minute timer that takes seconds as input and coverts to minutes
+ * display is applied to textContent of node
+ * @param {number} duration
+ * @param {number} display
  */
 function roundTimer(duration, display) {
   let timer = duration,
@@ -310,7 +312,6 @@ function roundTimer(duration, display) {
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
-
     display.textContent =
       `Timer: ` +
       minutes +
@@ -322,6 +323,7 @@ function roundTimer(duration, display) {
 
     if (--timer < 0) {
       timer = 0;
+      timerFinished = true;
     }
   }, 1000);
 }
@@ -342,11 +344,9 @@ function newQuestion() {
   displayAnswerInterval = setInterval(function () {
     visualizeGrid(questionID);
   }, 2000); // randomly display answers in different boxes every 2 seconds
+
 }
 
-function hideIntroScreen() {
-  document.getElementById("intro-screen").style.display = "none";
-}
 function hideGameElements() {
   document.getElementById("game-elements").style.display = "none";
 }
@@ -356,11 +356,11 @@ function hideGameElements() {
  */
 function initiateGame() {
   console.log("Initiate game");
-  hideIntroScreen();
   inStartScreen = false;
+  var audio1 = new Audio("./audio/МСвыд.mp3");
+  audio1.play();
   bgMusic.play();
-  document.getElementById("game-elements").style.display = "block";
-  document.getElementById("game-elements")
+
   newQuestion();
   return true;
 }
@@ -376,6 +376,8 @@ function checkUserInput(num) {
     newQuestion();
   } else {
     incorrectAnswer.play();
+
+incorrectAnswer.play()
     if (currentScore == 0) {
       currentScore = 0;
     } else {
@@ -383,13 +385,11 @@ function checkUserInput(num) {
     }
   }
 }
+
 function main() {
-  hideGameElements(); // Initially hide game elements
-  if (inStartScreen) {
-    document.getElementById("new-game").onclick = function () {
-      initiateGame();
-    };
-  }
+  initiateGame(); // Create new question, play background audio
+  let timer = document.getElementById("timer");
+  roundTimer(120, timer);
   document.getElementById("smallbox0").onclick = function () {
     checkUserInput(0);
   };
