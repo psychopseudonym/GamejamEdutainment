@@ -1,5 +1,5 @@
 .background {
-  background-color: #8D7EFC;
+  background-color: black;
   background-image: url(./images/forest.jpg);
   height:200%;
   background-position: center;
@@ -77,7 +77,7 @@ h2 {
 .boxes div {
   height: 200px;
   width: 200px;
-  border: 9px solid hotpink;
+  border: 9px solid rgb(3, 247, 32);
   font-size: 36px;
   color: white;
   background-color: rgb(95, 154, 128);
