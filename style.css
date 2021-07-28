@@ -1,5 +1,6 @@
 .background {
   background-color: black;
+  margin-top: 5%;
   background-image: url(./images/forest.jpg);
   height:200%;
   background-position: center;
@@ -72,7 +73,10 @@ h2 {
   color: white;
   text-align: center; 
   font-size: 72px; 
-  margin: 1%;
+  margin: auto;
+  margin-top: 5%;
+  background-color: rgb(62, 63, 63,0.8);
+  width: 50%;
 }
 .boxes div {
   height: 200px;
@@ -101,8 +105,9 @@ h2 {
   text-align:center;
   margin: auto;
   width: 50%;
-  padding: 10px;
+  /* padding: 10px; */
   margin-bottom:10px;
+  margin-top: 20px;
 }
 
 
