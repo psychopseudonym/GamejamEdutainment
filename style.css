@@ -1,18 +1,19 @@
 .background {
   background-color: black;
-  margin-top: 5%;
   background-image: url(./images/forest.jpg);
   height:200%;
+  margin-top: 5%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;  
+  cursor: url("./images/hammer.png"), default;
 }
 
 /************
 MAIN MENU  
 ************/
 
-#intro-screen {
+#main-menu {
   z-index: 999;
 }
 
@@ -35,7 +36,7 @@ h1 {
   margin-right: auto;
   width:30%;
 }
-.intro-buttons {
+.menu-buttons {
   display:flex;
   width:400px;
   height:500px;
@@ -43,7 +44,7 @@ h1 {
   flex-direction: column;
   justify-content:flex-start;
 }
-.intro-buttons button {
+.menu-buttons button {
   /* width: 100px; */
   margin: 0 10px 0 10px;
   height: 55px;
@@ -59,7 +60,7 @@ h1 {
   justify-content: center;
   margin-bottom: 25%;
 }
-.intro-buttons a {
+.menu-buttons a {
   text-decoration:none;
 }
 
@@ -73,6 +74,7 @@ h2 {
   color: white;
   text-align: center; 
   font-size: 72px; 
+  margin: 1%;
   margin: auto;
   margin-top: 5%;
   background-color: rgb(62, 63, 63,0.8);
