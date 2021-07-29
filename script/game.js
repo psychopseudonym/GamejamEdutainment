@@ -207,7 +207,7 @@ const questionsAndAnswers = [
 ];
 
 // Global variables for question tracking
-let questions = createRandomArray(0,questionsAndAnswers.length - 1); // Random questions 
+let questions = createRandomArray(0,questionsAndAnswers.length); // Random questions 
 let currQuestion = 0;                                                // Current selected question
 
 
