@@ -1,12 +1,10 @@
 // Global variables
-let previousQuestion = random(8); // Start off with a random question
 let smallboxAnswer = "0"; // smallbox inside answer grid containing the right answer
 let inStartScreen = true;
 let displayAnswerInterval;
-let questionID = 0;
 let currentScore = 0;
 let timerFinished = false;
-let correctAnswers = [];
+
 
 // function for question.id 2, answer[0]
 function randomVowel() {
@@ -208,6 +206,11 @@ const questionsAndAnswers = [
   },
 ];
 
+// Global variables for question tracking
+let questions = createRandomArray(0,questionsAndAnswers.length - 1); // Random questions 
+let currQuestion = 0;                                                // Current selected question
+
+
 // MUSIC
 
 bgMusic = new Audio("/sounds/bensound-littleidea.mp3");
@@ -335,13 +338,9 @@ function roundTimer(duration, display) {
 /**
  * Show a random question and its answer in the game. 2 of the same questions in a row are disabled
  */
-function newQuestion() {
+function newQuestion(questionID) {
   let numQuestions = questionsAndAnswers.length;
   if (numQuestions > 0){
-    questionID = 0;
-    do {
-      questionID = random(numQuestions); // Randomly select a question
-    } while (questionID == previousQuestion);
     visualizeQuestion(questionID);
     revisualizeGrid = true;
     visualizeGrid(questionID);
@@ -372,8 +371,7 @@ function initiateGame() {
   var audio1 = new Audio("./audio/МСвыд.mp3");
   audio1.play();
   bgMusic.play();
-
-  newQuestion();
+  newQuestion(questions[0]); // Initiate with first randomly selected question 
   return true;
 }
 
@@ -384,12 +382,13 @@ function checkUserInput(num) {
     console.log("Correct answer"); // Testing
     correctAnswer.play();
     currentScore += 10;
-
-    // create new array with correctly answered object
-    correctAnswers.push(questionsAndAnswers[questionID])
-    questionsAndAnswers.splice(questionID, 1);
-
-    newQuestion();
+    if(currQuestion > questions.length-1){
+      console.log("Finished!");
+    }else{
+      ++currQuestion; // Move onto next question
+      newQuestion(questions[currQuestion]);
+    }
+ 
   } else {
     incorrectAnswer.play();
     if (currentScore == 0) {
