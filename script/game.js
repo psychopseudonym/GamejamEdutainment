@@ -6,14 +6,13 @@ let displayAnswerInterval;
 let questionID = 0;
 let currentScore = 0;
 let timerFinished = false;
-
+let correctAnswers = [];
 
 // function for question.id 2, answer[0]
 function randomVowel() {
-  const vowels = ["A", "E", "I", "O", "U"]
-  return vowels[random(5)]
-};
-
+  const vowels = ["A", "E", "I", "O", "U"];
+  return vowels[random(5)];
+}
 
 /**
  * Questions Object
@@ -56,7 +55,7 @@ const questionsAndAnswers = [
     // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
     answer: [
       randomVowel(),
-      // 
+      //
       "B",
       "C",
       "D",
@@ -211,19 +210,24 @@ const questionsAndAnswers = [
 
 // MUSIC
 
+bgMusic = new Audio("/sounds/bensound-littleidea.mp3");
+bgMusic.volume = 0.2;
+correctAnswer = new Audio("/sounds/click-select.wav");
+correctAnswer.volume = 0.3;
+incorrectAnswer = new Audio("/sounds/click-error.wav");
+incorrectAnswer.volume = 0.3;
 
-bgMusic = new Audio('/sounds/bensound-littleidea.mp3');
-correctAnswer = new Audio('/sounds/click-select.wav');
-incorrectAnswer = new Audio('/sounds/click-error.wav');
-
-
-if (typeof bgMusic.loop == 'boolean') {
+if (typeof bgMusic.loop == "boolean") {
   bgMusic.loop = true;
 } else {
-  bgMusic.addEventListener('ended', function(){
-    this.currentTime = 0;
-    this.play()
-  }, false);
+  bgMusic.addEventListener(
+    "ended",
+    function () {
+      this.currentTime = 0;
+      this.play();
+    },
+    false
+  );
 }
 
 // Generate random number with bounds 0 to num
@@ -344,7 +348,6 @@ function newQuestion() {
   displayAnswerInterval = setInterval(function () {
     visualizeGrid(questionID);
   }, 2000); // randomly display answers in different boxes every 2 seconds
-
 }
 
 function hideGameElements() {
@@ -372,12 +375,16 @@ function checkUserInput(num) {
     console.log("Correct answer"); // Testing
     correctAnswer.play();
     currentScore += 10;
-    console.log(currentScore);
+    // create new array with correctly answered object
+    console.log(questionsAndAnswers[questionID])
+    correctAnswers.push(questionsAndAnswers[questionID])
+    questionsAndAnswers.splice(questionID, 1);
+    console.log(correctAnswers)
+    console.log('Length ', correctAnswers.length)    
+    console.log('Modified Question Bank ', questionsAndAnswers)
     newQuestion();
   } else {
     incorrectAnswer.play();
-
-incorrectAnswer.play()
     if (currentScore == 0) {
       currentScore = 0;
     } else {
