@@ -337,21 +337,30 @@ function roundTimer(duration, display) {
  */
 function newQuestion() {
   let numQuestions = questionsAndAnswers.length;
-  questionID = 0;
-  do {
-    questionID = random(numQuestions); // Randomly select a question
-  } while (questionID == previousQuestion);
-  visualizeQuestion(questionID);
-  revisualizeGrid = true;
-  visualizeGrid(questionID);
-  // visualizeGrid(questionID);
-  displayAnswerInterval = setInterval(function () {
+  if (numQuestions > 0){
+    questionID = 0;
+    do {
+      questionID = random(numQuestions); // Randomly select a question
+    } while (questionID == previousQuestion);
+    visualizeQuestion(questionID);
+    revisualizeGrid = true;
     visualizeGrid(questionID);
-  }, 2000); // randomly display answers in different boxes every 2 seconds
+    // visualizeGrid(questionID);
+    displayAnswerInterval = setInterval(function () {
+      visualizeGrid(questionID);
+    }, 2000); // randomly display answers in different boxes every 2 seconds
+  } else {
+    playAgain()
+  }
+
 }
 
 function hideGameElements() {
   document.getElementById("game-elements").style.display = "none";
+}
+
+function playAgain(){
+  document.getElementById("game-elements").style.display = "none"
 }
 
 /**
@@ -375,13 +384,11 @@ function checkUserInput(num) {
     console.log("Correct answer"); // Testing
     correctAnswer.play();
     currentScore += 10;
+
     // create new array with correctly answered object
-    console.log(questionsAndAnswers[questionID])
     correctAnswers.push(questionsAndAnswers[questionID])
     questionsAndAnswers.splice(questionID, 1);
-    console.log(correctAnswers)
-    console.log('Length ', correctAnswers.length)    
-    console.log('Modified Question Bank ', questionsAndAnswers)
+
     newQuestion();
   } else {
     incorrectAnswer.play();
