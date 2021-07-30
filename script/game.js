@@ -5,7 +5,6 @@ let displayAnswerInterval;
 let currentScore = 0;
 let timerFinished = false;
 
-
 // function for question.id 2, answer[0]
 function randomVowel() {
   const vowels = ["A", "E", "I", "O", "U"];
@@ -47,264 +46,264 @@ const questionsAndAnswers = [
       "Mount Fuji",
     ],
   },
-  {
-    "question.id": 2,
-    question: "Which letter is a vowel",
-    // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
-    answer: [
-      randomVowel(),
-      //
-      "B",
-      "C",
-      "D",
-      // "E",
-      "F",
-      "G",
-      "H",
-      // "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      // "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      // "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-    ],
-  },
-  {
-    "question.id": 3,
-    question: "Which month of the year has the least number of days?",
-    answer: [
-      "February",
-      "January",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ],
-  },
-  {
-    "question.id": 4,
-    question: "How many continents are there in the world?",
-    answer: ["7", "4", "1", "3", "2", "5", "6", "8", "9"],
-  },
-  {
-    "question.id": 5,
-    question: "Which animal is the king of the jungle?",
-    answer: [
-      "Lion",
-      "Ant",
-      "Pig",
-      "Donkey",
-      "Snake",
-      "Bat",
-      "Duck",
-      "Dog",
-      "Cat",
-    ],
-  },
-  {
-    "question.id": 6,
-    question: "How many hours do we have in a day?",
-    answer: [24, 12, 3, 6, 5, 1, 2, 8, 7],
-  },
-  {
-    "question.id": 7,
-    question: "Which direction does the sun set?",
-    answer: [
-      "West",
-      "East",
-      "North",
-      "South",
-      "Northwest",
-      "Northeast",
-      "Southwest",
-      "Southeast",
-      "Center",
-    ],
-  },
-  {
-    "question.id": 8,
-    question: "Which direction does the sun rise?",
-    answer: [
-      "East",
-      "West",
-      "North",
-      "South",
-      "Northwest",
-      "Northeast",
-      "Southwest",
-      "Southeast",
-      "Center",
-    ],
-  },
-  {
-    "question.id": 9,
-    question: "Who was the first president of the United States of America",
-    answer: [
-      "George Washington",
-      "Joe Biden",
-      "Bill Clinton",
-      "Barack Obama",
-      "Harry S. Truman",
-      "Richard Nixon",
-      "Donald Trump",
-      "John F. Kennedy",
-      "Ronald Reagan",
-    ],
-  },
-  {
-    "question.id": 10,
-    question: "Which vegetables are root vegetables?",
-    answer: [
-      "Carrots",
-      "Beans",
-      "Cabbages",
-      "Tomatoes",
-      "Peas",
-      "Spinach",
-      "Corn",
-      "Broccoli",
-      "Celery",
-    ],
-  },
-  {
-    "question.id": 11,
-    question: "What is the product of 3 x 3?",
-    answer: [9, 7, 33, 6, 1, 48, 2, 18, 5, 0, 12, 15],
-  },
-  {
-    "question.id": 12,
-    question: "What city is the Statute of Liberty in?",
-    answer: [
-      "New York City",
-      "Rhode Island",
-      "Miami",
-      "Los Angeles",
-      "Seattle",
-      "Austin",
-      "Denver",
-      "Las Vegas",
-      "Chicago",
-    ],
-  },
-  {
-    "question.id": 13,
-    question: "How many arms does an octopus have?",
-    answer: [8, 2, 4, 6, 1, 48, 7, 17, 5, 0, 12, 99],
-  },
-  {
-    "question.id": 14,
-    question: "What do bees make?",
-    answer: [
-      "Honey",
-      "Toys",
-      "Paper",
-      "Glass",
-      "Nuts",
-      "Salt",
-      "Sugar",
-      "Waffles",
-      "Milk",
-    ],
-  },
-  {
-    "question.id": 15,
-    question: "What is it called when birds fly to warmer climates for the winter?",
-    answer: [
-      "Migration",
-      "Black Friday",
-      "Heating Up",
-      "Exodus",
-      "Relocation",
-      "Moving",
-      "Traveling",
-      "Evaluation",
-      "Transporting",
-    ],
-  },
-  {
-    "question.id": 16,
-    question: "What is the bottom number of a fraction called?",
-    answer: [
-      "Denominator",
-      "The Terminator",
-      "Second Half",
-      "The Bottom",
-      "Lower",
-      "Base",
-      "Scope",
-      "Axis",
-      "Floor",
-    ],
-  },
-  {
-    "question.id": 17,
-    question: "Who invented the telephone?",
-    answer: [
-      "Alexander Graham Bell",
-      "Stephen Hawkins",
-      "Elon Musk",
-      "Hilary Clinton",
-      "Rosa Parks",
-      "Bruce Lee",
-      "Michael Jordan",
-      "Bill Gates",
-      "Amelia Earhart",
-    ],
-  },
-  {
-    "question.id": 18,
-    question: "Who discovered electricity?",
-    answer: [
-      "Benjamin Franklin",
-      "Theodore Roosevelt",
-      "Tom Brady",
-      "Albert Einstein",
-      "Steve Jobs",
-      "Grace Hopper",
-      "Jane Goodall",
-      "Sandra Day O'Connor",
-      "Nikola Tesla",
-    ],
-  },
-  {
-    "question.id": 19,
-    question: "What is the largest bird in the world??",
-    answer: [
-      "Ostrich",
-      "Eagle",
-      "Duck",
-      "Turkey",
-      "Chicken",
-      "Mockingbird",
-      "Swan",
-      "Vulture",
-      "Albatross",
-    ],
-  },
+  // {
+  //   "question.id": 2,
+  //   question: "Which letter is a vowel",
+  //   // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
+  //   answer: [
+  //     randomVowel(),
+  //     //
+  //     "B",
+  //     "C",
+  //     "D",
+  //     // "E",
+  //     "F",
+  //     "G",
+  //     "H",
+  //     // "I",
+  //     "J",
+  //     "K",
+  //     "L",
+  //     "M",
+  //     "N",
+  //     // "O",
+  //     "P",
+  //     "Q",
+  //     "R",
+  //     "S",
+  //     "T",
+  //     // "U",
+  //     "V",
+  //     "W",
+  //     "X",
+  //     "Y",
+  //     "Z",
+  //   ],
+  // },
+  // {
+  //   "question.id": 3,
+  //   question: "Which month of the year has the least number of days?",
+  //   answer: [
+  //     "February",
+  //     "January",
+  //     "March",
+  //     "April",
+  //     "May",
+  //     "June",
+  //     "July",
+  //     "August",
+  //     "September",
+  //     "October",
+  //     "November",
+  //     "December",
+  //   ],
+  // },
+  // {
+  //   "question.id": 4,
+  //   question: "How many continents are there in the world?",
+  //   answer: ["7", "4", "1", "3", "2", "5", "6", "8", "9"],
+  // },
+  // {
+  //   "question.id": 5,
+  //   question: "Which animal is the king of the jungle?",
+  //   answer: [
+  //     "Lion",
+  //     "Ant",
+  //     "Pig",
+  //     "Donkey",
+  //     "Snake",
+  //     "Bat",
+  //     "Duck",
+  //     "Dog",
+  //     "Cat",
+  //   ],
+  // },
+  // {
+  //   "question.id": 6,
+  //   question: "How many hours do we have in a day?",
+  //   answer: [24, 12, 3, 6, 5, 1, 2, 8, 7],
+  // },
+  // {
+  //   "question.id": 7,
+  //   question: "Which direction does the sun set?",
+  //   answer: [
+  //     "West",
+  //     "East",
+  //     "North",
+  //     "South",
+  //     "Northwest",
+  //     "Northeast",
+  //     "Southwest",
+  //     "Southeast",
+  //     "Center",
+  //   ],
+  // },
+  // {
+  //   "question.id": 8,
+  //   question: "Which direction does the sun rise?",
+  //   answer: [
+  //     "East",
+  //     "West",
+  //     "North",
+  //     "South",
+  //     "Northwest",
+  //     "Northeast",
+  //     "Southwest",
+  //     "Southeast",
+  //     "Center",
+  //   ],
+  // },
+  // {
+  //   "question.id": 9,
+  //   question: "Who was the first president of the United States of America",
+  //   answer: [
+  //     "George Washington",
+  //     "Joe Biden",
+  //     "Bill Clinton",
+  //     "Barack Obama",
+  //     "Harry S. Truman",
+  //     "Richard Nixon",
+  //     "Donald Trump",
+  //     "John F. Kennedy",
+  //     "Ronald Reagan",
+  //   ],
+  // },
+  // {
+  //   "question.id": 10,
+  //   question: "Which vegetables are root vegetables?",
+  //   answer: [
+  //     "Carrots",
+  //     "Beans",
+  //     "Cabbages",
+  //     "Tomatoes",
+  //     "Peas",
+  //     "Spinach",
+  //     "Corn",
+  //     "Broccoli",
+  //     "Celery",
+  //   ],
+  // },
+  // {
+  //   "question.id": 11,
+  //   question: "What is the product of 3 x 3?",
+  //   answer: [9, 7, 33, 6, 1, 48, 2, 18, 5, 0, 12, 15],
+  // },
+  // {
+  //   "question.id": 12,
+  //   question: "What city is the Statute of Liberty in?",
+  //   answer: [
+  //     "New York City",
+  //     "Rhode Island",
+  //     "Miami",
+  //     "Los Angeles",
+  //     "Seattle",
+  //     "Austin",
+  //     "Denver",
+  //     "Las Vegas",
+  //     "Chicago",
+  //   ],
+  // },
+  // {
+  //   "question.id": 13,
+  //   question: "How many arms does an octopus have?",
+  //   answer: [8, 2, 4, 6, 1, 48, 7, 17, 5, 0, 12, 99],
+  // },
+  // {
+  //   "question.id": 14,
+  //   question: "What do bees make?",
+  //   answer: [
+  //     "Honey",
+  //     "Toys",
+  //     "Paper",
+  //     "Glass",
+  //     "Nuts",
+  //     "Salt",
+  //     "Sugar",
+  //     "Waffles",
+  //     "Milk",
+  //   ],
+  // },
+  // {
+  //   "question.id": 15,
+  //   question:
+  //     "What is it called when birds fly to warmer climates for the winter?",
+  //   answer: [
+  //     "Migration",
+  //     "Black Friday",
+  //     "Heating Up",
+  //     "Exodus",
+  //     "Relocation",
+  //     "Moving",
+  //     "Traveling",
+  //     "Evaluation",
+  //     "Transporting",
+  //   ],
+  // },
+  // {
+  //   "question.id": 16,
+  //   question: "What is the bottom number of a fraction called?",
+  //   answer: [
+  //     "Denominator",
+  //     "The Terminator",
+  //     "Second Half",
+  //     "The Bottom",
+  //     "Lower",
+  //     "Base",
+  //     "Scope",
+  //     "Axis",
+  //     "Floor",
+  //   ],
+  // },
+  // {
+  //   "question.id": 17,
+  //   question: "Who invented the telephone?",
+  //   answer: [
+  //     "Alexander Graham Bell",
+  //     "Stephen Hawkins",
+  //     "Elon Musk",
+  //     "Hilary Clinton",
+  //     "Rosa Parks",
+  //     "Bruce Lee",
+  //     "Michael Jordan",
+  //     "Bill Gates",
+  //     "Amelia Earhart",
+  //   ],
+  // },
+  // {
+  //   "question.id": 18,
+  //   question: "Who discovered electricity?",
+  //   answer: [
+  //     "Benjamin Franklin",
+  //     "Theodore Roosevelt",
+  //     "Tom Brady",
+  //     "Albert Einstein",
+  //     "Steve Jobs",
+  //     "Grace Hopper",
+  //     "Jane Goodall",
+  //     "Sandra Day O'Connor",
+  //     "Nikola Tesla",
+  //   ],
+  // },
+  // {
+  //   "question.id": 19,
+  //   question: "What is the largest bird in the world??",
+  //   answer: [
+  //     "Ostrich",
+  //     "Eagle",
+  //     "Duck",
+  //     "Turkey",
+  //     "Chicken",
+  //     "Mockingbird",
+  //     "Swan",
+  //     "Vulture",
+  //     "Albatross",
+  //   ],
+  // },
 ];
 
 // Global variables for question tracking
-let questions = createRandomArray(0,questionsAndAnswers.length); // Random questions 
-let currQuestion = 0;                                                // Current selected question
-
+let questions = createRandomArray(0, questionsAndAnswers.length); // Random questions
+let currQuestion = 0; // Current selected question
 
 // MUSIC
 
@@ -392,9 +391,7 @@ function visualizeGrid(questionID) {
  * @param {number} questionID
  */
 function visualizeQuestion(questionID) {
-  document.getElementById(
-    "question"
-  ).textContent = `${questionsAndAnswers[questionID]["question"]}`;
+  document.getElementById("question").textContent = `${questionsAndAnswers[questionID]["question"]}`;
 }
 
 /**
@@ -434,27 +431,30 @@ function roundTimer(duration, display) {
  * Show a random question and its answer in the game. 2 of the same questions in a row are disabled
  */
 function newQuestion(questionID) {
-  let numQuestions = questionsAndAnswers.length;
-  if (numQuestions > 0){
-    visualizeQuestion(questionID);
-    revisualizeGrid = true;
+  visualizeQuestion(questionID);
+  revisualizeGrid = true;
+  visualizeGrid(questionID);
+  // visualizeGrid(questionID);
+  displayAnswerInterval = setInterval(function () {
     visualizeGrid(questionID);
-    // visualizeGrid(questionID);
-    displayAnswerInterval = setInterval(function () {
-      visualizeGrid(questionID);
-    }, 2000); // randomly display answers in different boxes every 2 seconds
-  } else {
-    playAgain()
-  }
-
+  }, 2000); // randomly display answers in different boxes every 2 seconds
 }
 
 function hideGameElements() {
   document.getElementById("game-elements").style.display = "none";
 }
 
-function playAgain(){
-  document.getElementById("game-elements").style.display = "none"
+function playAgain() {
+  let boxes = document.getElementsByClassName("boxes")
+  let a = document.createElement('a');
+  a.setAttribute('href', "game.html");
+  a.innerHTML = "Play Again?";
+  a.classList = "menu-buttons";
+  a.id = "new-game";
+  document.getElementById("game-elements").remove(boxes);
+  let body = document.querySelector("body");
+  body.appendChild(a);
+  
 }
 
 /**
@@ -466,7 +466,7 @@ function initiateGame() {
   var audio1 = new Audio("./audio/МСвыд.mp3");
   audio1.play();
   bgMusic.play();
-  newQuestion(questions[0]); // Initiate with first randomly selected question 
+  newQuestion(questions[0]); // Initiate with first randomly selected question
   return true;
 }
 
@@ -477,13 +477,14 @@ function checkUserInput(num) {
     console.log("Correct answer"); // Testing
     correctAnswer.play();
     currentScore += 10;
-    if(currQuestion > questions.length-1){
+    console.log(questions)
+    if (currQuestion >= questions.length - 1) {
       console.log("Finished!");
-    }else{
+      playAgain();
+    } else {
       ++currQuestion; // Move onto next question
       newQuestion(questions[currQuestion]);
     }
- 
   } else {
     incorrectAnswer.play();
     if (currentScore == 0) {
