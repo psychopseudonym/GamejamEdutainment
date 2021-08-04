@@ -4,6 +4,7 @@ let inStartScreen = true;
 let displayAnswerInterval;
 let currentScore = 0;
 let timerFinished = false;
+let correct = 0;
 
 // function for question.id 2, answer[0]
 function randomVowel() {
@@ -391,7 +392,9 @@ function visualizeGrid(questionID) {
  * @param {number} questionID
  */
 function visualizeQuestion(questionID) {
-  document.getElementById("question").textContent = `${questionsAndAnswers[questionID]["question"]}`;
+  document.getElementById(
+    "question"
+  ).textContent = `${questionsAndAnswers[questionID]["question"]}`;
 }
 
 /**
@@ -411,6 +414,7 @@ function roundTimer(duration, display) {
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
+    --timer;
     display.textContent =
       `Timer: ` +
       minutes +
@@ -420,11 +424,13 @@ function roundTimer(duration, display) {
       `Score: ` +
       currentScore;
 
-    if (--timer < 0) {
+    if (timer <= 0) {
       timer = 0;
       timerFinished = true;
+      playAgain();
     }
   }, 1000);
+  // return;
 }
 
 /**
@@ -445,23 +451,20 @@ function hideGameElements() {
 }
 
 function playAgain() {
- 
-  let a = document.createElement('a');
-  a.setAttribute('href', "game.html");
-  a.innerHTML = "Play Again?";
-  a.classList = "menu-buttons";
-  a.id = "new-game";
-
   let gameElements = document.getElementById("game-elements");
-  // body.appendChild(a);
-  document.getElementById("question").textContent = 'Game Over';
+  document.getElementById("question").textContent = "Game Over";
   document.getElementById("test").style.display = "none";
-  let endResults = document.createElement('div');
+  let endResults = document.createElement("div");
   endResults.id = "end-results";
 
-  endResults.textContent = `Correctly Answered Questions`;
- 
+  endResults.innerHTML = `Correctly Answered Questions<br>${correct}/${
+    questions.length
+  }<br>${
+    (correct / questions.length) * 100
+  }%<br><a href="game.html"><button>Play Again?</button></a>`;
+
   gameElements.appendChild(endResults);
+  return gameElements;
 }
 
 /**
@@ -484,7 +487,8 @@ function checkUserInput(num) {
     console.log("Correct answer"); // Testing
     correctAnswer.play();
     currentScore += 10;
-    console.log(questions)
+    correct += 1;
+    console.log(questions);
     if (currQuestion >= questions.length - 1) {
       console.log("Finished!");
       playAgain();
@@ -505,7 +509,7 @@ function checkUserInput(num) {
 function main() {
   initiateGame(); // Create new question, play background audio
   let timer = document.getElementById("timer");
-  roundTimer(120, timer);
+  roundTimer(5, timer);
   document.getElementById("smallbox0").onclick = function () {
     checkUserInput(0);
   };
