@@ -1,11 +1,14 @@
 .background {
-  background-color: black;
+  /* background-color: black;
   background-image: url(./images/forest.jpg);
-  height:200%;
-  margin-top: 5%;
-  background-position: center;
+  /* height:200%; */
+  /* margin-top: 5%; */
+  /* background: fixed; */
+  /* background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;   */
+  background: url(images/forest.jpg) no-repeat center center fixed;
+  background-size: cover;
   cursor: url("./images/hammer.png"), default;
 }
 
