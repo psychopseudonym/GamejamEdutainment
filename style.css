@@ -19,12 +19,7 @@ h1 {
   text-align: center;
   font-size: 750%;
   margin: 2%;
-<<<<<<< HEAD
   margin-bottom: 7.5%;
-=======
-  cursor: url("./images/hammer.png"), default;
-
->>>>>>> f67ff97f2df126f8c2ae6df007fc1da3db821273
   /* background: -webkit-linear-gradient(rgb(120, 224, 134), rgb(95, 95, 95)); */
   background: -webkit-linear-gradient(rgb(3, 247, 32), rgba(245, 111, 2, 0.856));
   -webkit-background-clip: text;
@@ -42,12 +37,7 @@ h1 {
 
   margin:auto;
   flex-direction: column;
-<<<<<<< HEAD
   justify-content:center;
-=======
-  justify-content:flex-start;
-  cursor: url("./images/hammer.png"), default;
->>>>>>> f67ff97f2df126f8c2ae6df007fc1da3db821273
 }
 .menu-buttons button {
   /* width: 100px; */
@@ -63,12 +53,7 @@ h1 {
   text-align: center;
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
   margin-bottom: 6.25%;
-=======
-  margin-bottom: 25%;
-  cursor: url("./images/hammer.png"), default;
->>>>>>> f67ff97f2df126f8c2ae6df007fc1da3db821273
 }
 .menu-buttons a {
   text-decoration:none;
