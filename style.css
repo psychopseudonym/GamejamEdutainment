@@ -1,12 +1,4 @@
 .background {
-  /* background-color: black;
-  background-image: url(./images/forest.jpg);
-  /* height:200%; */
-  /* margin-top: 5%; */
-  /* background: fixed; */
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;   */
   background: url(images/forest.jpg) no-repeat center center fixed;
   background-size: cover;
   cursor: url("./images/hammer.png"), default;
@@ -25,9 +17,9 @@ h1 {
   /* color: #f89c54; */
   font-family: 'Unica One', cursive;
   text-align: center;
-  font-size: 144px;
+  font-size: 750%;
   margin: 2%;
-
+  margin-bottom: 7.5%;
   /* background: -webkit-linear-gradient(rgb(120, 224, 134), rgb(95, 95, 95)); */
   background: -webkit-linear-gradient(rgb(3, 247, 32), rgba(245, 111, 2, 0.856));
   -webkit-background-clip: text;
@@ -41,27 +33,27 @@ h1 {
 }
 .menu-buttons {
   display:flex;
-  width:400px;
-  height:500px;
+  width:100%;
+
   margin:auto;
   flex-direction: column;
-  justify-content:flex-start;
+  justify-content:center;
 }
 .menu-buttons button {
   /* width: 100px; */
-  margin: 0 10px 0 10px;
-  height: 55px;
-  line-height: 55px;
-  width: 300px;
+  margin: auto;
+  height: 5%;
+  /* line-height: 55px; */
+  width: 7.5em;
   /* border: 9px solid hotpink; */
-  font-size: 36px;
+  font-size: 225%;
   color: white;
   background-color: rgb(62, 63, 63);
   opacity:0.8;
   text-align: center;
   display: flex;
   justify-content: center;
-  margin-bottom: 25%;
+  margin-bottom: 6.25%;
 }
 .menu-buttons a {
   text-decoration:none;
@@ -89,7 +81,7 @@ h2 {
 .boxes {
   position: absolute;
   top: 20%;
-  left: 29%;
+  left: 30%;
   height: 70%;
 }
 
@@ -104,7 +96,7 @@ h2 {
   color: white;
   background-color: rgb(65, 114, 93);
   text-align: center;
-  font-size: 2.0vw;
+  font-size: 1.75vw;
 }
 
 
@@ -132,13 +124,24 @@ h2 {
   margin-top: 20px; */
 }
 
-#end-results {
+#end-results  {
   position: absolute;
   bottom: 50%;
+  left: 25%;
   color: white;
+  background-color: rgba(62,63,63,0.8);
+
   margin: auto;
-  width: 100%;
+  width: 50%;
   text-align: center;
+  font-size: 350%;
+}
+
+#end-results button {
+  background-color: rgb(62, 63, 63);
+  width: 50%;
+  color: white;
+  font-size: 75%;
 }
 
 
