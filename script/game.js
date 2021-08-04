@@ -408,7 +408,7 @@ function roundTimer(duration, display) {
     minutes,
     seconds;
 
-  setInterval(function () {
+  let timerInterval = setInterval(function () {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
 
@@ -424,13 +424,15 @@ function roundTimer(duration, display) {
       `Score: ` +
       currentScore;
 
-    if (timer <= 0) {
+    if (timer < 0) {
       timer = 0;
+      clearInterval(timerInterval);
+      clearInterval(displayAnswerInterval);
       timerFinished = true;
       playAgain();
     }
   }, 1000);
-  // return;
+  
 }
 
 /**
