@@ -19,7 +19,12 @@ h1 {
   text-align: center;
   font-size: 750%;
   margin: 2%;
+<<<<<<< HEAD
   margin-bottom: 7.5%;
+=======
+  cursor: url("./images/hammer.png"), default;
+
+>>>>>>> f67ff97f2df126f8c2ae6df007fc1da3db821273
   /* background: -webkit-linear-gradient(rgb(120, 224, 134), rgb(95, 95, 95)); */
   background: -webkit-linear-gradient(rgb(3, 247, 32), rgba(245, 111, 2, 0.856));
   -webkit-background-clip: text;
@@ -37,7 +42,12 @@ h1 {
 
   margin:auto;
   flex-direction: column;
+<<<<<<< HEAD
   justify-content:center;
+=======
+  justify-content:flex-start;
+  cursor: url("./images/hammer.png"), default;
+>>>>>>> f67ff97f2df126f8c2ae6df007fc1da3db821273
 }
 .menu-buttons button {
   /* width: 100px; */
@@ -53,10 +63,16 @@ h1 {
   text-align: center;
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   margin-bottom: 6.25%;
+=======
+  margin-bottom: 25%;
+  cursor: url("./images/hammer.png"), default;
+>>>>>>> f67ff97f2df126f8c2ae6df007fc1da3db821273
 }
 .menu-buttons a {
   text-decoration:none;
+  cursor: url("./images/hammer.png"), default;
 }
 
 /********
@@ -155,4 +171,38 @@ h2 {
 .instruction-message * {
   
   text-decoration-color: blue;
+}
+
+/********
+Settings
+********/
+.settings-background {
+  background: url(images/forest.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height:100%;
+}
+#content-box {
+  background-color:  rgb(62, 63, 63,0.8);
+  /* display:block; */
+  /* width:80%;   */
+  height:70vh;
+  border: 12px ridge orange;
+}
+
+.page-titles {
+  display:block;
+  width:100px;
+  font-size: 40px;
+  margin-left:10%;
+  color:rgb(17, 117, 47);
+  margin-bottom: 5px;
+}
+
+/*********
+Instructions
+**********/
+#instructions-message {
+  color:rgb(214, 209, 209);
+  font-size:30px;
+  margin: 0 10px 0 10px;
 }
