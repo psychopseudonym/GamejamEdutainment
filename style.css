@@ -1,3 +1,9 @@
+body {
+  width: 100%;
+  margin: auto;
+}
+
+
 .background {
   background: url(images/forest.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -191,3 +197,15 @@ Instructions
   font-size:30px;
   margin: 0 10px 0 10px;
 }
+
+
+/*************
+Responsiveness
+*************/
+
+/* @media only screen and (max-width: 320px){
+  body {
+    width: 100%;
+    margin: auto;
+  }
+} */
