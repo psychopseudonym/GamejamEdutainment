@@ -3,7 +3,6 @@ body {
   margin: auto;
 }
 
-
 .background {
   background: url(images/forest.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -172,13 +171,6 @@ Settings
   background-size: cover;
   height:100%;
 }
-#content-box {
-  background-color:  rgb(62, 63, 63,0.8);
-  /* display:block; */
-  /* width:80%;   */
-  height:70vh;
-  border: 12px ridge orange;
-}
 
 .page-titles {
   display:block;
@@ -198,6 +190,24 @@ Instructions
   margin: 0 10px 0 10px;
 }
 
+.main-return {
+  display:block;
+  /* position:absolute; */
+  margin:auto;
+  margin-top:-50px;
+  background-color: rgb(118, 118, 228);
+  font-size:20px;
+  text-decoration: none;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#content-box {
+  background-color:  rgb(62, 63, 63,0.8);
+  /* display:block; */
+  /* width:80%;   */
+  height:70vh;
+  border: 12px ridge orange;
+}
 
 /*************
 Responsiveness
@@ -208,4 +218,4 @@ Responsiveness
     width: 100%;
     margin: auto;
   }
-} */
+} */ 
