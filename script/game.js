@@ -453,19 +453,19 @@ function hideGameElements() {
 }
 
 function playAgain() {
-  let gameElements = document.getElementById("game-elements");
-  document.getElementById("question").textContent = "Game Over";
-  document.getElementById("test").style.display = "none";
-  let endResults = document.createElement("div");
+  hideGameElements();
+
+  let endResults = document.createElement("div"); // Create game results overlay
   endResults.id = "end-results";
 
-  endResults.innerHTML = `Correctly Answered Questions<br>${correct}/${
+  endResults.innerHTML = `Game Over <br> Correctly Answered Questions<br>${correct}/${
     questions.length
   }<br>${
     (correct / questions.length) * 100
-  }%<br><a href="game.html"><button>Play Again?</button></a>`;
+  }%<br><a href="game.html"><button>Play Again</button></a><br><a href="main.html"><button>Main Menu</button></a>`;
 
-  gameElements.appendChild(endResults);
+  let gameEnd = document.getElementById("game-page");
+  gameEnd.appendChild(endResults);
   return gameElements;
 }
 
