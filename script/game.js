@@ -420,7 +420,7 @@ function roundTimer(duration, display) {
       minutes +
       ":" +
       seconds +
-      "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +
+      "\xa0\xa0\xa0\xa0\xa0" +
       `Score: ` +
       currentScore;
 
@@ -494,6 +494,7 @@ function checkUserInput(num) {
     if (currQuestion >= questions.length - 1) {
       console.log("Finished!");
       playAgain();
+      
     } else {
       ++currQuestion; // Move onto next question
       newQuestion(questions[currQuestion]);
@@ -511,7 +512,7 @@ function checkUserInput(num) {
 function main() {
   initiateGame(); // Create new question, play background audio
   let timer = document.getElementById("timer");
-  roundTimer(5, timer);
+  roundTimer(120, timer);
   document.getElementById("smallbox0").onclick = function () {
     checkUserInput(0);
   };
