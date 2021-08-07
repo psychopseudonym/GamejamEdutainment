@@ -308,11 +308,11 @@ let currQuestion = 0; // Current selected question
 
 // MUSIC
 
-bgMusic = new Audio("/sounds/bensound-littleidea.mp3");
+bgMusic = new Audio("sounds/bensound-littleidea.mp3");
 bgMusic.volume = 0.2;
-correctAnswer = new Audio("/sounds/click-select.wav");
+correctAnswer = new Audio("sounds/click-select.wav");
 correctAnswer.volume = 0.3;
-incorrectAnswer = new Audio("/sounds/click-error.wav");
+incorrectAnswer = new Audio("sounds/click-error.wav");
 incorrectAnswer.volume = 0.3;
 
 if (typeof bgMusic.loop == "boolean") {
@@ -462,7 +462,7 @@ function playAgain() {
     questions.length
   }<br>${
     (correct / questions.length) * 100
-  }%<br><a href="game.html"><button>Play Again</button></a><br><a href="main.html"><button>Main Menu</button></a>`;
+  }%<br><a href="game.html"><button>Play Again</button></a><br><a href="index.html"><button>Main Menu</button></a>`;
 
   let gameEnd = document.getElementById("game-page");
   gameEnd.appendChild(endResults);
@@ -475,8 +475,6 @@ function playAgain() {
 function initiateGame() {
   console.log("Initiate game");
   inStartScreen = false;
-  var audio1 = new Audio("./audio/МСвыд.mp3");
-  audio1.play();
   bgMusic.play();
   newQuestion(questions[0]); // Initiate with first randomly selected question
   return true;

@@ -213,9 +213,15 @@ Instructions
 Responsiveness
 *************/
 
-/* @media only screen and (max-width: 320px){
+@media only screen and (max-width: 320px){
   body {
-    width: 100%;
+
     margin: auto;
   }
-} */ 
+
+  h1 {
+    width: 50%;
+    font-size: 375%;
+    margin: auto;
+  }
+} 
