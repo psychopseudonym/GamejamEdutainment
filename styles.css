@@ -177,6 +177,56 @@ Settings
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.main-settings-return {
+  margin: auto;
+  background-color: rgb(118, 118, 228);
+  font-size: 20px;
+  text-decoration: none;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: white;
+  position:relative;
+  top:110px;
+  /* position:absolute; */
+}
+#timer-adjust {
+  height: 25px;
+  width:6%;
+  margin-left: 20px;
+  font-size:20px;
+  position:relative;
+  background-color: rgb(62, 63, 63,0.8);
+  color:white;
+  border-radius:15%;
+}
+
+#rotation {
+  height: 25px;
+  width:6%;
+  margin-left: 20px;
+  font-size:20px;
+  position:relative;
+  background-color: rgb(62, 63, 63,0.8);
+  color:white;
+  border-radius:15%;
+}
+
+#set-game-time {
+  color:orange;
+  font-size: 25px;
+  position:relative;
+  left:5px;
+  bottom: 1px;
+}
+
+.s-form-buttons {
+  border-radius:15%;
+  background-color: orange;
+}
+.s-form-buttons:active {
+  background-color:rgb(131, 106, 61);
+}
+
 
 /*********
 Instructions
@@ -199,6 +249,7 @@ p#instructions-message {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: white;
+  /* position:absolute; */
 }
 
 #content-box {
