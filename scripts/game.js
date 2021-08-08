@@ -6,6 +6,13 @@ let currentScore = 0;
 let timerFinished = false;
 let correct = 0;
 
+// User customizable global variables
+let time = localStorage.getItem('time')   > 0 ? localStorage.getItem('time')  : 120;
+let qTime = localStorage.getItem('qTime') > 0 ? localStorage.getItem('qTime') : 3;
+console.log("Time:" + qTime);
+
+
+
 // function for question.id 2, answer[0]
 function randomVowel() {
   const vowels = ["A", "E", "I", "O", "U"];
@@ -443,7 +450,6 @@ function visualizeGrid(questionID) {
     "smallbox" + selectedGrids[0]
   ).textContent = `${questionsAndAnswers[questionID]["answer"][0]}`;
   smallboxAnswer = selectedGrids[0];
-  console.log("Grid answer:" + smallboxAnswer);
   // Add in wrong answers
   numAnswers = numAnswers > 9 ? 9 : numAnswers; // # answer choices <= # smallboxes
   let numTimes = 0;
@@ -513,7 +519,7 @@ function newQuestion(questionID) {
   // visualizeGrid(questionID);
   displayAnswerInterval = setInterval(function () {
     visualizeGrid(questionID);
-  }, 3000); // randomly display answers in different boxes every 2 seconds
+  }, qTime * 1000); // randomly display answers in different boxes every 2 seconds
 }
 
 function hideGameElements() {
@@ -549,16 +555,12 @@ function initiateGame() {
 }
 
 function checkUserInput(num) {
-  console.log("Box:" + num + " Answer:" + smallboxAnswer); // Testing
   if (num == smallboxAnswer) {
     clearInterval(displayAnswerInterval);
-    console.log("Correct answer"); // Testing
     correctAnswer.play();
     currentScore += 10;
     correct += 1;
-    console.log(questions);
     if (currQuestion >= questions.length - 1) {
-      console.log("Finished!");
       playAgain();
     } else {
       ++currQuestion; // Move onto next question
@@ -577,7 +579,7 @@ function checkUserInput(num) {
 function main() {
   initiateGame(); // Create new question, play background audio
   let timer = document.getElementById("timer");
-  roundTimer(120, timer);
+  roundTimer(time, timer);
   document.getElementById("smallbox0").onclick = function () {
     checkUserInput(0);
   };
