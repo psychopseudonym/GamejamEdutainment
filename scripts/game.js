@@ -50,30 +50,24 @@ const questionsAndAnswers = [
   {
     "question.id": 2,
     question: "Which letter is a vowel",
-    // will need to code a function that allows a, e, i, o, u from this array to be accepted as an answer
     answer: [
       randomVowel(),
-      //
       "B",
       "C",
       "D",
-      // "E",
       "F",
       "G",
       "H",
-      // "I",
       "J",
       "K",
       "L",
       "M",
       "N",
-      // "O",
       "P",
       "Q",
       "R",
       "S",
       "T",
-      // "U",
       "V",
       "W",
       "X",
@@ -244,7 +238,7 @@ const questionsAndAnswers = [
     "question.id": 16,
     question: "What is the bottom number of a fraction called?",
     answer: [
-      "Denominator",
+      "The Denominator",
       "The Terminator",
       "Second Half",
       "The Bottom",
@@ -298,6 +292,81 @@ const questionsAndAnswers = [
       "Swan",
       "Vulture",
       "Albatross",
+    ],
+  },
+  {
+    "question.id": 20,
+    question: "If you freeze water, what do you get?",
+    answer: [
+      "Ice",
+      "Fire",
+      "Blocks",
+      "Gas",
+      "More Water",
+      "Nothing",
+      "Less Water",
+      "Steam",
+      "Dirt",
+    ],
+  },
+  {
+    "question.id": 21,
+    question: "Which animal is the tallest in the world?",
+    answer: [
+      "Giraffe",
+      "Monkey",
+      "Horse",
+      "Sheep",
+      "Alligator",
+      "Rhinoceros",
+      "Wolf",
+      "Goat",
+      "Tiger",
+    ],
+  },
+  {
+    "question.id": 22,
+    question: "Who was the first man to step on the moon?",
+    answer: [
+      "Neil Armstrong",
+      "Andy Kaufman",
+      "Moses",
+      "Julius Caesar",
+      "Elvis Presley",
+      "Michael Jordan",
+      "Princess Diana",
+      "Selena Gomez",
+      "Socrates",
+    ],
+  },
+  {
+    "question.id": 23,
+    question: "What is the largest state in America?",
+    answer: [
+      "Alaska",
+      "Texas",
+      "California",
+      "Florida",
+      "Arizona",
+      "Iowa",
+      "Ohio",
+      "Washington",
+      "Delaware",
+    ],
+  },
+  {
+    "question.id": 24,
+    question: "What is the smalles state in America?",
+    answer: [
+      "Rhode Island",
+      "New Mexico",
+      "Kansas",
+      "Nebraska",
+      "Utah",
+      "Wyoming",
+      "Oregon",
+      "Montana",
+      "Kentucky",
     ],
   },
 ];
@@ -432,7 +501,6 @@ function roundTimer(duration, display) {
       playAgain();
     }
   }, 1000);
-  
 }
 
 /**
@@ -445,7 +513,7 @@ function newQuestion(questionID) {
   // visualizeGrid(questionID);
   displayAnswerInterval = setInterval(function () {
     visualizeGrid(questionID);
-  }, 2000); // randomly display answers in different boxes every 2 seconds
+  }, 3000); // randomly display answers in different boxes every 2 seconds
 }
 
 function hideGameElements() {
@@ -458,7 +526,7 @@ function playAgain() {
   let endResults = document.createElement("div"); // Create game results overlay
   endResults.id = "end-results";
 
-  endResults.innerHTML = `Game Over <br> Correctly Answered Questions<br>${correct}/${
+  endResults.innerHTML = `<b>End of Game</b><br> Correctly Answered Questions<br>${correct}/${
     questions.length
   }<br>${
     (correct / questions.length) * 100
@@ -492,7 +560,6 @@ function checkUserInput(num) {
     if (currQuestion >= questions.length - 1) {
       console.log("Finished!");
       playAgain();
-      
     } else {
       ++currQuestion; // Move onto next question
       newQuestion(questions[currQuestion]);

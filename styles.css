@@ -1,6 +1,7 @@
 body {
   width: 100%;
   margin: auto;
+  font-family: Lucida Sans;
 }
 
 .background {
@@ -19,14 +20,15 @@ MAIN MENU
 
 /* Game title */
 h1 {
-  /* color: #f89c54; */
-  font-family: 'Unica One', cursive;
+  font-family: "Unica One", cursive;
   text-align: center;
   font-size: 750%;
   margin: 2%;
   margin-bottom: 7.5%;
-  /* background: -webkit-linear-gradient(rgb(120, 224, 134), rgb(95, 95, 95)); */
-  background: -webkit-linear-gradient(rgb(3, 247, 32), rgba(245, 111, 2, 0.856));
+  background: -webkit-linear-gradient(
+    rgb(3, 247, 32),
+    rgba(245, 111, 2, 0.856)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -34,35 +36,32 @@ h1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width:30%;
+  width: 30%;
 }
 .menu-buttons {
-  display:flex;
-  width:100%;
+  display: flex;
+  width: 100%;
 
-  margin:auto;
+  margin: auto;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
 }
 .menu-buttons button {
-  /* width: 100px; */
   margin: auto;
   height: 5%;
-  /* line-height: 55px; */
   width: 7.5em;
-  /* border: 9px solid hotpink; */
   font-size: 225%;
   color: white;
   background-color: rgb(62, 63, 63);
-  opacity:0.8;
+  opacity: 0.8;
   text-align: center;
   display: flex;
   justify-content: center;
   margin-bottom: 6.25%;
 }
 .menu-buttons a {
-  text-decoration:none;
-  cursor: url("./images/hammer.png"), default;
+  text-decoration: none;
+  cursor: url("images/hammer.png"), default;
 }
 
 /********
@@ -73,38 +72,36 @@ GAME AREA
 /* For cloud text: https://codepen.io/CameronFitzwilliam/pen/pamobO */
 h2 {
   color: white;
-  text-align: center; 
-  font-size: 48px; 
+  text-align: center;
+  font-size: 48px;
   margin: auto;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgb(62, 63, 63,0.8);
+  background-color: rgb(62, 63, 63, 0.8);
   width: 100%;
   height: 10%;
 }
 
 .boxes {
-  position: absolute;
-  top: 20%;
-  left: 30%;
-  height: 70%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
 }
-
-
 
 .boxes div {
   height: 24%;
   width: 24%;
   border: 4px groove rgb(233, 193, 16);
   padding: 2%;
-  font-size: 36px;
   color: white;
   background-color: rgb(65, 114, 93);
   text-align: center;
-  font-size: 1.75vw;
+  font-size: 1.15vw;
+  word-wrap: break-word;
 }
-
 
 #menu {
   display: flex;
@@ -114,33 +111,30 @@ h2 {
 }
 
 #timer {
-  /* color : #89CFF0; */
-  color:rgb(221, 216, 216);
-  background-color: rgb(62, 63, 63,0.8);
+  color: rgb(221, 216, 216);
+  background-color: rgb(62, 63, 63, 0.8);
   font-size: 48px;
   font-weight: bold;
   position: absolute;
   left: 0;
   top: 10%;
-  text-align:center;
+  text-align: center;
   margin: auto;
   width: 100%;
-  /* padding: 20px;
-  margin-bottom:10px;
-  margin-top: 20px; */
 }
 
-#end-results  {
-  position: absolute;
-  bottom: 50%;
-  left: 25%;
+#end-results {
   color: white;
-  background-color: rgba(62,63,63,0.8);
-
+  background-color: rgba(62, 63, 63, 0.8);
   margin: auto;
   width: 50%;
+  height: 50%;
   text-align: center;
   font-size: 350%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #end-results button {
@@ -150,17 +144,16 @@ h2 {
   font-size: 75%;
 }
 
-
 .instruction-message {
-  background-color:white;
-  display:flex;
-  justify-content:space-around;
-  width:300px;
-  margin:auto;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  margin: auto;
 }
 .instruction-message * {
-  
   text-decoration-color: blue;
+  text-align: center;
 }
 
 /********
@@ -169,53 +162,63 @@ Settings
 .settings-background {
   background: url(images/forest.jpg) no-repeat center center fixed;
   background-size: cover;
-  height:100%;
+  height: 100%;
 }
 
 .page-titles {
-  display:block;
-  width:100px;
-  font-size: 40px;
-  margin-left:10%;
-  color:rgb(17, 117, 47);
-  margin-bottom: 5px;
+  font-family: "Unica One", cursive;
+  text-align: center;
+  font-size: 500%;
+  margin: 2%;
+  background: -webkit-linear-gradient(
+    rgb(3, 247, 32),
+    rgba(245, 111, 2, 0.856)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /*********
 Instructions
 **********/
 #instructions-message {
-  color:rgb(214, 209, 209);
-  font-size:30px;
+  color: rgb(214, 209, 209);
+  font-size: 30px;
   margin: 0 10px 0 10px;
 }
 
+p#instructions-message {
+  text-align: center;
+}
+
 .main-return {
-  display:block;
-  /* position:absolute; */
-  margin:auto;
-  margin-top:-50px;
+  margin: auto;
   background-color: rgb(118, 118, 228);
-  font-size:20px;
+  font-size: 20px;
   text-decoration: none;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: white;
 }
 
 #content-box {
-  background-color:  rgb(62, 63, 63,0.8);
-  /* display:block; */
-  /* width:80%;   */
-  height:70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(62, 63, 63, 0.8);
+  height: 40vh;
   border: 12px ridge orange;
+  margin: auto;
+  width: 80%;
 }
 
 /*************
 Responsiveness
 *************/
 
-@media only screen and (max-width: 320px){
+@media only screen and (max-width: 320px) {
   body {
-
     margin: auto;
   }
 
@@ -224,4 +227,4 @@ Responsiveness
     font-size: 375%;
     margin: auto;
   }
-} 
+}
