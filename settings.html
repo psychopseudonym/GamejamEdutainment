@@ -12,15 +12,18 @@
 <body class="settings-background">
     <h3 class="page-titles">SETTINGS</h3>
     <div id="content-box">
-
-        <div>
-            <img src="images/light-mode.png">
-            <p>Brightnes</p>
-        </div>
-
+        <form name="settings" onsubmit="updateValues()" onreset="setDefault()">
+            <label for="timer-adjust" id="set-game-time">Game time (seconds):</label>
+            <input type="number" id="timer-adjust" name="timer-adjust"><br>
+            <label for="rotation" id="set-game-time">Answer Rotation (seconds):</label>
+            <input type="number" id="rotation" name="rotation"><br>
+            <input type="reset" class="s-form-buttons">
+            <input type="submit" class="s-form-buttons"value="Submit">
+        </form>  
+        <a href="index.html"><button class="main-settings-return">Main Menu</button></a>
     </div>
-    <a href="index.html"><button class="main-return">Main Menu</button></a>
+    
 
 </body>
-
+<script src="scripts/main.js"></script>
 </html>
