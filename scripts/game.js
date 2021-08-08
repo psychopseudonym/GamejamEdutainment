@@ -356,7 +356,7 @@ const questionsAndAnswers = [
   },
   {
     "question.id": 24,
-    question: "What is the smalles state in America?",
+    question: "What is the smallest state in America?",
     answer: [
       "Rhode Island",
       "New Mexico",
